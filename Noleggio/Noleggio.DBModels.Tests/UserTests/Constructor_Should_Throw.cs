@@ -89,7 +89,7 @@ namespace Noleggio.DBModels.Tests.UserTests
             var dateOfbirth = fixture.Create<DateTime>();
 
             //Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(guid, randomString, firstName, randomString, dateOfbirth, randomString, randomString));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new User(guid, randomString, firstName, randomString, dateOfbirth, randomString, randomString));
         }
 
         [Test]
@@ -103,7 +103,7 @@ namespace Noleggio.DBModels.Tests.UserTests
             var dateOfbirth = fixture.Create<DateTime>();
 
             //Act & Assert
-            Assert.Throws<ArgumentException>(() => new User(guid, randomString, firstName, randomString, dateOfbirth, randomString, randomString));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new User(guid, randomString, firstName, randomString, dateOfbirth, randomString, randomString));
         }
 
         [Test]

@@ -17,7 +17,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
 
@@ -33,7 +33,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var email = fixture.Create<string>().Substring(0, 10);
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
@@ -50,7 +50,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var firstName = fixture.Create<string>().Substring(0, 10);
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
@@ -67,7 +67,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var lastName = fixture.Create<string>().Substring(0, 10);
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
@@ -84,7 +84,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
 
@@ -100,7 +100,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var city = fixture.Create<string>().Substring(0, 10);
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
@@ -117,7 +117,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         {
             //Arange
             var fixture = new Fixture();
-            Guid guid = Guid.Empty;
+            Guid guid = fixture.Create<Guid>();
             var address = fixture.Create<string>().Substring(0, 10);
             var randomString = fixture.Create<string>().Substring(0, 10);
             var dateOfbirth = fixture.Create<DateTime>();
@@ -134,7 +134,7 @@ namespace Noleggio.DBModels.Tests.UserTests
         //{
         //    //Arange
         //    var fixture = new Fixture();
-        //    Guid guid = Guid.Empty;
+        //    Guid guid = fixture.Create<Guid>();
         //    var address = fixture.Create<string>().Substring(0, 10);
         //    var randomString = fixture.Create<string>().Substring(0, 10);
         //    var dateOfbirth = fixture.Create<DateTime>();
