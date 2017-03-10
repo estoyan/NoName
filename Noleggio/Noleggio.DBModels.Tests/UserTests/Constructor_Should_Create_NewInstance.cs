@@ -18,11 +18,11 @@ namespace Noleggio.DBModels.Tests.UserTests
             //Arange
             var fixture = new Fixture();
             var guid = fixture.Create<Guid>();
-            var randomString = fixture.Create<string>();
-            var age = 42;
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth=fixture.Create<DateTime>();
 
             //Act
-            var user = new User(guid, randomString, randomString, randomString, age, randomString, randomString);
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
             //Assert
             Assert.IsNotNull(user);
@@ -34,11 +34,11 @@ namespace Noleggio.DBModels.Tests.UserTests
             //Arange
             var fixture = new Fixture();
             var guid = fixture.Create<Guid>();
-            var randomString = fixture.Create<string>();
-            var age = 42;
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth=fixture.Create<DateTime>();
 
             //Act
-            var user = new User(guid, randomString, randomString, randomString, age, randomString, randomString);
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
             //Assert
             Assert.AreEqual(typeof(User), user.GetType());

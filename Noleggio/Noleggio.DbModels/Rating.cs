@@ -13,7 +13,7 @@ namespace Noleggio.DbModels
 
         public Rating()
         {
-            this.IsHidden = false;
+            this.IsDeleted = false;
         }
 
         public Rating(Guid fromUser, Guid toUser, int rate) : this()
@@ -42,6 +42,9 @@ namespace Noleggio.DbModels
         public Guid FromUserId { get; set; }
         public virtual User FromUser { get; set; }
 
-        public bool IsHidden { get; set; }
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
     }
 }

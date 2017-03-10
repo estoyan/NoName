@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Noleggio.Common;
 using System.ComponentModel.DataAnnotations.Schema;
+//using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Noleggio.DbModels
 {
-    public class User
+    public class User /*: IdentityUser*/
     {
 
         const string ExceptionMiminumAgeMessage = "Mimimum allowed age is {0}";
@@ -24,7 +25,6 @@ namespace Noleggio.DbModels
 
         private string lastName;
         private string firstName;
-        private int age;
         private string city;
         private string address;
 
@@ -34,7 +34,7 @@ namespace Noleggio.DbModels
             this.leases = new HashSet<Lease>();
             this.items = new HashSet<RentItem>();
             this.ratings = new HashSet<Rating>();
-            this.IsHidden = false;
+            this.IsDeleted = false;
         }
 
         public User(Guid aspNetUserId, string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
@@ -49,12 +49,14 @@ namespace Noleggio.DbModels
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;
+            this.City = city;
+            this.Address = address;
         }
 
         public Guid Id { get; private set; }
 
         [Required]
-        [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         public string Username { get; private set; }
 
         [Required]
@@ -135,7 +137,7 @@ namespace Noleggio.DbModels
 
         [DataType(DataType.Date)]
         [Required]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; private set; }
 
         [NotMapped]
         public byte? Age => Calculator.Age(this.DateOfBirth);
@@ -168,7 +170,10 @@ namespace Noleggio.DbModels
             set { this.ratings = value; }
         }
 
-        public bool IsHidden { get; set; }
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
     }
 
 }

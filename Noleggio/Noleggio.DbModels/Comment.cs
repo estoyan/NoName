@@ -13,7 +13,7 @@ namespace Noleggio.DbModels
         public Comment()
         {
             this.Date = DateTime.Now;
-            this.IsHidden = false;
+            this.IsDeleted = false;
         }
 
         public Comment(User user, RentItem item, string description) : this()
@@ -46,6 +46,9 @@ namespace Noleggio.DbModels
         [Required]
         public DateTime Date { get; set; }
 
-        public bool IsHidden { get; set; }
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
     }
 }

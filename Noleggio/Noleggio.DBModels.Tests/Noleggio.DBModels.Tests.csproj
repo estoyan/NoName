@@ -61,11 +61,16 @@
     <Compile Include="UserTests\Constructor_Should_Create_NewInstance.cs" />
     <Compile Include="UserTests\Constructor_Should_SetProperties.cs" />
     <Compile Include="UserTests\Constructor_Should_Throw.cs" />
+    <Compile Include="UserTests\Properties_Should_SetGet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Noleggio.Common\Noleggio.Common.csproj">
+      <Project>{8169defc-9158-4cd6-98dd-c52a473a226a}</Project>
+      <Name>Noleggio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Noleggio.DbModels\Noleggio.DbModels.csproj">
       <Project>{69e11a1f-295e-4743-a30e-1ba7f99b9991}</Project>
       <Name>Noleggio.DbModels</Name>
