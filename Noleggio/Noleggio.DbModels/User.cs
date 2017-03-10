@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Noleggio.DbModels
 {
-    public class User 
+    public class User
     {
+        const int MimiumAge = 18;
+        const int MaximumAge = 110;
+        const string ExceptionMiminumAgeMessage = "Mimimum allowed age is {0}";
+        readonly string ExceptionMaxinumAgeMessage ="Maximum allowed age is {0}";
+
         private ICollection<Comment> comments;
         private ICollection<Lease> leases;
         private ICollection<RentItem> items;
@@ -32,7 +33,8 @@ namespace Noleggio.DbModels
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
             Guard.WhenArgument(firstName, nameof(firstName)).IsNullOrEmpty().Throw();
             Guard.WhenArgument(lastName, nameof(lastName)).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(age, nameof(age)).IsLessThan(18).Throw();
+            Guard.WhenArgument(age, string.Format(ExceptionMiminumAgeMessage, MimiumAge)).IsLessThan(MimiumAge).Throw();
+            Guard.WhenArgument(age, string.Format(ExceptionMaxinumAgeMessage,MaximumAge)).IsGreaterThan(MaximumAge).Throw();
             Guard.WhenArgument(city, nameof(city)).IsNullOrEmpty().Throw();
 
             this.Id = aspNetUserId;
@@ -43,7 +45,6 @@ namespace Noleggio.DbModels
             this.Age = age;
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]
@@ -53,14 +54,14 @@ namespace Noleggio.DbModels
         [Required]
         public string FirstName { get; set; }
 
-        [Required]  
+        [Required]
         public string LastName { get; set; }
 
         [Required]
-        public string  City { get; set; }
+        public string City { get; set; }
 
         [Required]
-        public string   Address { get; set; }
+        public string Address { get; set; }
 
         [Required]
         public int Age { get; set; }
@@ -94,4 +95,5 @@ namespace Noleggio.DbModels
 
         public bool IsHidden { get; set; }
     }
+
 }

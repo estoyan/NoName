@@ -8,7 +8,7 @@ namespace Noleggio.DbModels
     public class Comment
     {
         const int DescriptionMaxLenght = 200;
-        readonly string DescriptionMaxLenghtExceptionMessage = string.Format("Comment  cannot be more than {0} symbols", DescriptionMaxLenght);
+        readonly string DescriptionMaxLenghtExceptionMessage = "Comment  cannot be more than {0} symbols";
 
         public Comment()
         {
@@ -21,7 +21,7 @@ namespace Noleggio.DbModels
             Guard.WhenArgument(item, nameof(item)).IsNull().Throw();
             Guard.WhenArgument(user, nameof(user)).IsNull().Throw();
             Guard.WhenArgument(description, nameof(description)).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(description.Length, DescriptionMaxLenghtExceptionMessage).IsGreaterThan(DescriptionMaxLenght).Throw();
+            Guard.WhenArgument(description.Length, string.Format(DescriptionMaxLenghtExceptionMessage,description)).IsGreaterThan(DescriptionMaxLenght).Throw();
 
             this.User = user;
             this.Item = item;
