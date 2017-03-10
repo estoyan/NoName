@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Noleggio.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
@@ -36,7 +37,7 @@ namespace Noleggio.DbModels
             this.IsHidden = false;
         }
 
-        public User(Guid aspNetUserId, string email, string firstName, string lastName, int age, string city, string address)
+        public User(Guid aspNetUserId, string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
             : this()
         {
             Guard.WhenArgument(aspNetUserId, nameof(aspNetUserId)).IsEmptyGuid().Throw();
@@ -47,7 +48,7 @@ namespace Noleggio.DbModels
             //this.Email = email;
             this.FirstName = firstName;
             this.LastName = lastName;
-            this.Age = age;
+            this.DateOfBirth = dateOfBirth;
         }
 
         public Guid Id { get; private set; }
@@ -132,21 +133,13 @@ namespace Noleggio.DbModels
             }
         }
 
+        [DataType(DataType.Date)]
         [Required]
-        public int Age
-        {
-            get
-            {
-                return this.age;
-            }
+        public DateTime? DateOfBirth { get; set; }
 
-            set
-            {
-                Guard.WhenArgument(value, string.Format(ExceptionMiminumAgeMessage, Constants.UserMimiumAge)).IsLessThan(Constants.UserMimiumAge).Throw();
-                Guard.WhenArgument(value, string.Format(ExceptionMaxinumAgeMessage, Constants.UserMaximumAge)).IsGreaterThan(Constants.UserMaximumAge).Throw();
-                this.age = value;
-            }
-        }
+        [NotMapped]
+        public byte? Age => Calculator.Age(this.DateOfBirth);
+
 
         //[Required]
         //public string Email { get; set; }
