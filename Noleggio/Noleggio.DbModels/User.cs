@@ -2,15 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Noleggio.Common;
 
 namespace Noleggio.DbModels
 {
     public class User
     {
-        const int MimiumAge = 18;
-        const int MaximumAge = 110;
+        
         const string ExceptionMiminumAgeMessage = "Mimimum allowed age is {0}";
-        readonly string ExceptionMaxinumAgeMessage ="Maximum allowed age is {0}";
+        const string ExceptionMaxinumAgeMessage ="Maximum allowed age is {0}";
 
         private ICollection<Comment> comments;
         private ICollection<Lease> leases;
@@ -33,8 +33,8 @@ namespace Noleggio.DbModels
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
             Guard.WhenArgument(firstName, nameof(firstName)).IsNullOrEmpty().Throw();
             Guard.WhenArgument(lastName, nameof(lastName)).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(age, string.Format(ExceptionMiminumAgeMessage, MimiumAge)).IsLessThan(MimiumAge).Throw();
-            Guard.WhenArgument(age, string.Format(ExceptionMaxinumAgeMessage,MaximumAge)).IsGreaterThan(MaximumAge).Throw();
+            Guard.WhenArgument(age, string.Format(ExceptionMiminumAgeMessage, Constants.UserMimiumAge)).IsLessThan(Constants.UserMimiumAge).Throw();
+            Guard.WhenArgument(age, string.Format(ExceptionMaxinumAgeMessage, Constants.UserMaximumAge)).IsGreaterThan(Constants.UserMaximumAge).Throw();
             Guard.WhenArgument(city, nameof(city)).IsNullOrEmpty().Throw();
 
             this.Id = aspNetUserId;
