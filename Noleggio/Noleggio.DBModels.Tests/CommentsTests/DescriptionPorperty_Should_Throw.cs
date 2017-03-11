@@ -26,7 +26,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var deletedDate = fixture.Create<DateTime>();
 
             //Act&Assert
-            Assert.Throws<ArgumentException>(() => commet.Description = null);
+            Assert.Throws<ArgumentNullException>(() => commet.Description = null);
         }
 
         [Test]
