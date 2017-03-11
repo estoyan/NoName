@@ -17,7 +17,7 @@ namespace Noleggio.DbModels
         {
             Guard.WhenArgument(rentItem, nameof(rentItem)).IsEmptyGuid().Throw();
             Guard.WhenArgument(user, nameof(user)).IsEmptyGuid().Throw();
-            Guard.WhenArgument(startDate, StartDateCannobeGreater).IsLessThanOrEqual(endDate).Throw();
+            Guard.WhenArgument(startDate, StartDateCannobeGreater).IsGreaterThanOrEqual(endDate).Throw();
 
             this.ItemId = rentItem;
             this.UserId = user;
@@ -36,11 +36,11 @@ namespace Noleggio.DbModels
 
         [Required]
         public Guid ItemId { get; private set; }
-        public virtual RentItem Item { get; set; }
+        public virtual RentItem Item { get; private set; }
 
         [Required]
         public Guid UserId { get; private set; }
-        public virtual User User { get; set; }
+        public virtual User User { get; private set; }
 
     }
 }
