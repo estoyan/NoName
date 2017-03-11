@@ -62,7 +62,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var commet = new Comment(user, item, description);
 
             //Assert
-            Assert.AreSame(user,commet.User);
+            Assert.AreEqual(user,commet.UserId);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var commet = new Comment(user, item, description);
 
             //Assert
-            Assert.AreSame(item, commet.Item);
+            Assert.AreEqual(item, commet.ItemId);
         }
 
         [Test]

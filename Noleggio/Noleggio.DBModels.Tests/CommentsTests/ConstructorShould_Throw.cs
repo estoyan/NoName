@@ -14,7 +14,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
     public class ConstructorShould_Throw
     {
         [Test]
-        public void WhenItemIsNUll()
+        public void WhenItemIsEmptyGuid()
         {
             //Arange
             var fixture = new Fixture();
@@ -22,11 +22,11 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var description = "randomText";
 
             //Act&assert
-            Assert.Throws<ArgumentNullException>(() => new Comment(user, new Guid(), description));
+            Assert.Throws<ArgumentException>(() => new Comment(user, new Guid(), description));
         }
 
         [Test]
-        public void WhenUserIsNull()
+        public void WhenUserIsEmtyGuid()
         {
             //Arange
             var fixture = new Fixture();
@@ -34,7 +34,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var description = "randomText";
 
             //Act&assert
-            Assert.Throws<ArgumentNullException>(() => new Comment(new Guid(), item, description));
+            Assert.Throws<ArgumentException>(() => new Comment(new Guid(), item, description));
         }
     }
 }
