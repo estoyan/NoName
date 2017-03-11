@@ -21,5 +21,11 @@ namespace Noleggio.Common
 
         public const int CommentDescriptionMaxLength = 200;
 
+        public const int MinRate = 0;
+        public const int MaxRate = 5;
+
+        public const int CommentMaxLength = 200;
+        public const int ImagePathLength = 100;
+
     }
 }

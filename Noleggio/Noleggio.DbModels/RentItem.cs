@@ -1,4 +1,5 @@
 ﻿using Bytes2you.Validation;
+using Noleggio.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,12 +9,11 @@ namespace Noleggio.DbModels
 {
     public class RentItem
     {
-        //TODO extract constants to a sepaerte file
-        const int CommentMaxLength = 200;
-        const int ImagePathLength = 100;
-        readonly string DescriptionLength = string.Format("Item description cannot be longer than {0} symbols",CommentMaxLength);
+        const string DescriptionLength = "Item description cannot be longer than {0} symbols";
         const string ImagePathTooLong = "Path to image cannot be longer than  100 symbols";
-    
+        private string description;
+        private string imagePath;
+
         private ICollection<Comment> comments;
         private ICollection<Lease> leases;
 
@@ -23,15 +23,14 @@ namespace Noleggio.DbModels
             this.comments = new HashSet<Comment>();
         }
 
-        public RentItem(User user, Category category, string description) : this()
+        public RentItem(Guid user, Guid category, string description) : this()
         {
-            Guard.WhenArgument(user, nameof(user)).IsNull().Throw();
-            Guard.WhenArgument(category, nameof(category)).IsNull().Throw();
-            Guard.WhenArgument(description, nameof(description)).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(description.Length, DescriptionLength).IsGreaterThan(CommentMaxLength).Throw();
+            Guard.WhenArgument(user, nameof(user)).IsEmptyGuid().Throw();
+            Guard.WhenArgument(category, nameof(category)).IsEmptyGuid().Throw();
 
-            this.Owner = user;
-            this.Category = category;
+
+            this.OwnerId = user;
+            this.CategoryId = category;
             this.Description = description;
         }
 
@@ -39,20 +38,48 @@ namespace Noleggio.DbModels
         public Guid Id { get; private set; }
 
         [Required]
-        public Guid OwnerId { get; set; }
+        public Guid OwnerId { get; private set; }
         public virtual User Owner { get; private set; }
 
         [Required]
-        public Guid CategoryId { get; set; }
+        public Guid CategoryId { get; private set; }
         public virtual Category Category { get; private set; }
 
         [Required]
-        [MaxLength(CommentMaxLength)]
-        public string Description { get; private set; }
+        [MaxLength(Constants.CommentMaxLength)]
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+
+            set
+            {
+                Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
+                Guard.WhenArgument(value.Length, string.Format(DescriptionLength, Constants.CommentMaxLength)).IsGreaterThan(Constants.CommentMaxLength).Throw();
+
+                this.description = value;
+            }
+        }
 
         [Required]
-        [MaxLength(ImagePathLength,ErrorMessage =ImagePathTooLong)]
-        public string ImageLocation { get; set; }
+        [MaxLength(Constants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
+        public string ImageLocation
+        {
+            get
+            {
+                return this.imagePath;
+            }
+
+            set
+            {
+                Guard.WhenArgument(value, nameof(imagePath)).IsNullOrEmpty().Throw();
+                Guard.WhenArgument(value.Length, string.Format(ImagePathTooLong, Constants.ImagePathLength)).IsGreaterThan(Constants.ImagePathLength).Throw();
+
+                this.imagePath = value;
+            }
+        }
 
         public virtual ICollection<Lease> Leases
         {
