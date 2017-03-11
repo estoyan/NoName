@@ -17,14 +17,14 @@ namespace Noleggio.DbModels
             this.IsDeleted = false;
         }
 
-        public Comment(User user, RentItem item, string description) : this()
+        public Comment(Guid user, Guid rentItem, string description) : this()
         {
-            Guard.WhenArgument(item, nameof(item)).IsNull().Throw();
-            Guard.WhenArgument(user, nameof(user)).IsNull().Throw();
+            Guard.WhenArgument(rentItem, nameof(rentItem)).IsEmptyGuid().Throw();
+            Guard.WhenArgument(user, nameof(user)).IsEmptyGuid().Throw();
            
 
-            this.User = user;
-            this.Item = item;
+            this.UserId = user;
+            this.ItemId = rentItem;
             this.Description = description;
         }
 
