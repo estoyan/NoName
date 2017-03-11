@@ -59,6 +59,10 @@
     <Compile Include="CategoryTests\Constructor_Should.cs" />
     <Compile Include="CategoryTests\ItemsProperty_Should.cs" />
     <Compile Include="CategoryTests\NamePropertyShould.cs" />
+    <Compile Include="CommentsTests\ConstructorShould_Throw.cs" />
+    <Compile Include="CommentsTests\Constructor_Should.cs" />
+    <Compile Include="CommentsTests\DescriptionPorperty_Should_Throw.cs" />
+    <Compile Include="CommentsTests\PropertiesShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserTests\ConstructorShould_Initialize_Collections.cs" />
     <Compile Include="UserTests\Constructor_Should_Create_NewInstance.cs" />

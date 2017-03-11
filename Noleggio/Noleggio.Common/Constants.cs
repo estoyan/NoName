@@ -18,5 +18,8 @@ namespace Noleggio.Common
 
         public const int CategoryNameMinLenght = 3;
         public const int CategoryNameMaxLenght = 30;
+
+        public const int CommentDescriptionMaxLength = 200;
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Bytes2you.Validation;
+using Noleggio.Common;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,8 +8,8 @@ namespace Noleggio.DbModels
 {
     public class Comment
     {
-        const int DescriptionMaxLenght = 200;
-        readonly string DescriptionMaxLenghtExceptionMessage = "Comment  cannot be more than {0} symbols";
+        const string DescriptionMaxLenghtExceptionMessage = "Comment  cannot be more than {0} symbols";
+        private string description;
 
         public Comment()
         {
@@ -20,8 +21,7 @@ namespace Noleggio.DbModels
         {
             Guard.WhenArgument(item, nameof(item)).IsNull().Throw();
             Guard.WhenArgument(user, nameof(user)).IsNull().Throw();
-            Guard.WhenArgument(description, nameof(description)).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(description.Length, string.Format(DescriptionMaxLenghtExceptionMessage,description)).IsGreaterThan(DescriptionMaxLenght).Throw();
+           
 
             this.User = user;
             this.Item = item;
@@ -33,18 +33,30 @@ namespace Noleggio.DbModels
 
         [Required]
         public Guid UserId { get; set; }
-        public virtual User User { get; set; }
+        public virtual User User { get; private set; }
 
         [Required]
         public Guid ItemId { get; set; }
-        public virtual RentItem Item { get; set; }
+        public virtual RentItem Item { get; private set; }
 
         [Required]
-        [MaxLength(DescriptionMaxLenght)]
-        public string Description { get; set; }
+        [MaxLength(Constants.CommentDescriptionMaxLength)]
+        public string Description
+        {
+            get
+            {
+                return this.description;
+            }
+            set
+            {
+                Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
+                Guard.WhenArgument(value.Length, string.Format(DescriptionMaxLenghtExceptionMessage, Constants.CommentDescriptionMaxLength)).IsGreaterThan(Constants.CommentDescriptionMaxLength).Throw();
+                this.description = value;
+            }
+        }
 
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; private set; }
 
         public bool IsDeleted { get; set; }
 
