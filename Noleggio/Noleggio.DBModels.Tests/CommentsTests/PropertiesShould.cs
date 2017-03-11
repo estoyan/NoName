@@ -18,8 +18,8 @@ namespace Noleggio.DBModels.Tests.CommentsTests
         {
             //Arrange
             var fixture = new Fixture();
-            var user = new User();
-            var item = new RentItem();
+            var user = fixture.Create<Guid>();
+            var item = fixture.Create<Guid>();
             var description = "randomText";
             var commet = new Comment(user, item, description);
             var newDescription = "newDescription";
@@ -36,8 +36,8 @@ namespace Noleggio.DBModels.Tests.CommentsTests
         {
             //Arrange
             var fixture = new Fixture();
-            var user = new User();
-            var item = new RentItem();
+            var user = fixture.Create<Guid>();
+            var item = fixture.Create<Guid>();
             var description = "randomText";
             var commet = new Comment(user, item, description);
 
@@ -53,8 +53,8 @@ namespace Noleggio.DBModels.Tests.CommentsTests
         {
             //Arrange
             var fixture = new Fixture();
-            var user = new User();
-            var item = new RentItem();
+            var user = fixture.Create<Guid>();
+            var item = fixture.Create<Guid>();
             var description = "randomText";
             var commet = new Comment(user, item, description);
             var deletedDate = fixture.Create<DateTime>();

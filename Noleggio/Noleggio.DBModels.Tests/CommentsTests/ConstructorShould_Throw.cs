@@ -18,11 +18,11 @@ namespace Noleggio.DBModels.Tests.CommentsTests
         {
             //Arange
             var fixture = new Fixture();
-            var user = new User();
+            var user = fixture.Create<Guid>();
             var description = "randomText";
 
             //Act&assert
-            Assert.Throws<ArgumentNullException>(() => new Comment(user, null, description));
+            Assert.Throws<ArgumentNullException>(() => new Comment(user, new Guid(), description));
         }
 
         [Test]
@@ -30,11 +30,11 @@ namespace Noleggio.DBModels.Tests.CommentsTests
         {
             //Arange
             var fixture = new Fixture();
-            var item = new RentItem();
+            var item = fixture.Create<Guid>();
             var description = "randomText";
 
             //Act&assert
-            Assert.Throws<ArgumentNullException>(() => new Comment(null, item, description));
+            Assert.Throws<ArgumentNullException>(() => new Comment(new Guid(), item, description));
         }
     }
 }
