@@ -15,6 +15,8 @@ namespace Noleggio.Common
         public const int UserLastNameMaximumLenght = UserFirstNameMaximumLenght;
         public const int UserAddressMaximumLength = 30;
         public const int UserCityMaximumLength = 30;
-        
+
+        public const int CategoryNameMinLenght = 3;
+        public const int CategoryNameMaxLenght = 30;
     }
 }
