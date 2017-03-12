@@ -59,12 +59,14 @@
     <Compile Include="CategoryTests\Constructor_Should.cs" />
     <Compile Include="CategoryTests\ItemsProperty_Should.cs" />
     <Compile Include="CategoryTests\NamePropertyShould.cs" />
+    <Compile Include="CategoryTests\PropertiesShould.cs" />
     <Compile Include="CommentsTests\ConstructorShould_Throw.cs" />
     <Compile Include="CommentsTests\Constructor_Should.cs" />
     <Compile Include="CommentsTests\DescriptionPorperty_Should_Throw.cs" />
     <Compile Include="CommentsTests\PropertiesShould.cs" />
     <Compile Include="LeaseTests\Constructor_Should.cs" />
     <Compile Include="LeaseTests\Constructor_Should_Throw.cs" />
+    <Compile Include="LeaseTests\Properties_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingTests\Constructor_Should.cs" />
     <Compile Include="RentItems\ConstructorShould_Throw.cs" />

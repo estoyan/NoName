@@ -115,5 +115,24 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             //Assert
             Assert.NotNull(commet.Date);
         }
+
+        [Test]
+        public void SetIsDeletedToFalseAnd_ReturnsFalse()
+        {
+
+
+            //Arrange
+            var fixture = new Fixture();
+            var user = fixture.Create<Guid>();
+            var item = fixture.Create<Guid>();
+            var description = "randomText";
+
+
+            //Act
+            var commet = new Comment(user, item, description);
+
+            //Assert
+            Assert.AreEqual(false, commet.IsDeleted);
+        }
     }
 }

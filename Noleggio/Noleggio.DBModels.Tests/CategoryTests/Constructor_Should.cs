@@ -63,5 +63,22 @@ namespace Noleggio.DBModels.CategoryTests
             //Assert
             Assert.IsNotNull(category.Items);
         }
+
+        [Test]
+        public void SetIsDeletedToFalseAnd_ReturnsFalse()
+        {
+
+
+            //Arrange
+            var fixture = new Fixture();
+            var name = fixture.Create<string>().Substring(0, 10);
+
+            //Act
+            var category = new Category(name);
+
+
+            //Assert
+            Assert.AreEqual(false, category.IsDeleted);
+        }
     }
 }

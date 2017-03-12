@@ -121,5 +121,49 @@ namespace Noleggio.DBModels.Tests.RentItems
             Assert.AreEqual(comment, item.Comments.FirstOrDefault());
         }
 
+        [Test]
+        public void SetDeletedOnAndREturnSameValue()
+        {
+
+             //Arrange
+            var fixture = new Fixture();
+            var user = fixture.Create<Guid>();
+            var category = fixture.Create<Guid>();
+            var desciption = "random string";
+            var item = new RentItem(user, category, desciption);
+            var comment = new Comment();
+            var deletedOn = new DateTime();
+
+
+            //Act
+            item.DeletedOn = deletedOn;
+
+            //Assert
+            Assert.AreEqual(deletedOn, item.DeletedOn);
+
+        }
+
+
+
+
+        [Test]
+        public void IsDeletedToTrue()
+        {
+
+            //Arrange
+            var fixture = new Fixture();
+            var user = fixture.Create<Guid>();
+            var category = fixture.Create<Guid>();
+            var desciption = "random string";
+            var comment = new Comment();
+            var item = new RentItem(user, category, desciption);
+
+
+            //Act
+            item.IsDeleted = true;
+            //Assert
+            Assert.AreEqual(true, item.IsDeleted);
+        }
+
     }
 }

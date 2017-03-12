@@ -343,5 +343,45 @@ namespace Noleggio.DBModels.Tests.UserTests
         }
 
 
+        [Test]
+        public void IsDeletedREturnsFalse()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var rating = new Rating();
+
+            //Act 
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+
+            //Assert
+            Assert.AreEqual(false, user.IsDeleted);
+        }
+
+
+        [Test]
+        public void IsDeletedToTrue()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var rating = new Rating();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+
+
+            //Act 
+            user.IsDeleted = true;
+
+            //Assert
+            Assert.AreEqual(true, user.IsDeleted);
+        }
+
+
     }
 }
