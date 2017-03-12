@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class Comment
+    public class Comment: IDeletableEntity
     {
         const string DescriptionMaxLenghtExceptionMessage = "Comment  cannot be more than {0} symbols";
         private string description;

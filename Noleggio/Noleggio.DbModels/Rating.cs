@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Noleggio.DbModels
 {
-    public class Rating
+    public class Rating : IDeletableEntity
     {
 
         const string MinRateExceptionMessage = "Minimal rating cannot be less than 0";
@@ -23,7 +23,7 @@ namespace Noleggio.DbModels
 
             Guard.WhenArgument(fromUser, nameof(fromUser)).IsEmptyGuid().Throw();
             Guard.WhenArgument(toUser, nameof(toUser)).IsEmptyGuid().Throw();
-          
+
 
             this.ToUserId = toUser;
             this.FromUserId = fromUser;
@@ -42,7 +42,7 @@ namespace Noleggio.DbModels
 
             set
             {
-                Guard.WhenArgument(value, string.Format(MinRateExceptionMessage,Constants.MinRate)).IsLessThan(Constants.MinRate).Throw();
+                Guard.WhenArgument(value, string.Format(MinRateExceptionMessage, Constants.MinRate)).IsLessThan(Constants.MinRate).Throw();
                 Guard.WhenArgument(value, string.Format(MaxRateExceptionMessage, Constants.MaxRate)).IsGreaterThan(Constants.MaxRate).Throw();
                 this.rate = value;
             }

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class User /*: IdentityUser*/
+    public class User : IDeletableEntity
     {
 
         const string ExceptionMiminumAgeMessage = "Mimimum allowed age is {0}";

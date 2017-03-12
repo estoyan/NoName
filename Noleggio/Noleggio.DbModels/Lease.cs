@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class Lease
+    public class Lease: IDeletableEntity
     {
         const string StartDateCannobeGreater = "Start Date cannot be greater than end date";
 
@@ -41,6 +41,11 @@ namespace Noleggio.DbModels
         [Required]
         public Guid UserId { get; private set; }
         public virtual User User { get; private set; }
+
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
 
     }
 }

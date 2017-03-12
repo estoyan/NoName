@@ -52,6 +52,7 @@
     <Compile Include="Factories\IRatingFactory.cs" />
     <Compile Include="Factories\ICommentFactory.cs" />
     <Compile Include="Factories\IUserFactory.cs" />
+    <Compile Include="Contracts\IDeletableEntity.cs" />
     <Compile Include="Lease.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Rating.cs" />

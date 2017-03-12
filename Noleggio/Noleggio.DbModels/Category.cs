@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class Category
+    public class Category: IDeletableEntity
     {
 
         readonly string CategoryNameMinLenghtExceptionMessage = string.Format("Category name cannot be less than {0} symbols", Constants.CategoryNameMinLenght);
@@ -59,5 +59,10 @@ namespace Noleggio.DbModels
                 this.items = value;
             }
         }
+
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
     }
 }

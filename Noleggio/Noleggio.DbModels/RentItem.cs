@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class RentItem
+    public class RentItem: IDeletableEntity
     {
         const string DescriptionLength = "Item description cannot be longer than {0} symbols";
         const string ImagePathTooLong = "Path to image cannot be longer than  100 symbols";
@@ -104,5 +104,10 @@ namespace Noleggio.DbModels
                 this.comments = value;
             }
         }
+
+        public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DeletedOn { get; set; }
     }
 }
