@@ -123,7 +123,7 @@ namespace Noleggio.DBModels.Tests.UserTests
             var dateOfbirth = fixture.Create<DateTime>();
 
             //Act 
-            var user = new User(guid, randomString, randomString, randomString, dateOfbirth,  randomString, address);
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
 
             //Assert
             Assert.AreEqual(address, user.Address);
@@ -144,5 +144,164 @@ namespace Noleggio.DBModels.Tests.UserTests
 
 
         //}
+
+        [Test]
+        public void LeasesAndItShouldHaveOnlyOneLease()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var lease = new Lease();
+
+            //Act 
+            user.Leases.Add(lease);
+
+            //Assert
+            Assert.AreEqual(1, user.Leases.Count);
+        }
+
+
+        [Test]
+        public void LeasesAndItShouldHaveTheSameLease()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var lease = new Lease();
+
+            //Act 
+            user.Leases.Add(lease);
+
+            //Assert
+            Assert.AreEqual(lease, user.Leases.FirstOrDefault());
+        }
+
+        [Test]
+        public void CommentsAndItShouldHaveOnlyOneComment()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var comment = new Comment();
+
+            //Act 
+            user.Comments.Add(comment);
+
+            //Assert
+            Assert.AreEqual(1, user.Comments.Count);
+        }
+
+
+        [Test]
+        public void CommentsAndItShouldHaveTheSameComment()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var comment = new Comment();
+
+            //Act 
+            user.Comments.Add(comment);
+
+            //Assert
+            Assert.AreEqual(comment, user.Comments.FirstOrDefault());
+        }
+
+
+        [Test]
+        public void ItemsAndItShouldHaveOnlyOneRentItem()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var item = new RentItem();
+
+            //Act 
+            user.Items.Add(item);
+
+            //Assert
+            Assert.AreEqual(1, user.Items.Count);
+        }
+
+
+        [Test]
+        public void ItemsAndItShouldHaveTheSameItem()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var item = new RentItem();
+
+            //Act 
+            user.Items.Add(item);
+
+            //Assert
+            Assert.AreEqual(item, user.Items.FirstOrDefault());
+        }
+
+        [Test]
+        public void RatingsAndItShouldHaveOnlyOneRating()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var rating = new Rating();
+
+            //Act 
+            user.Ratings.Add(rating);
+
+            //Assert
+            Assert.AreEqual(1, user.Ratings.Count);
+        }
+
+
+        [Test]
+        public void RatingsAndItShouldHaveTheSameRating()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var rating = new Rating();
+
+            //Act 
+            user.Ratings.Add(rating);
+
+            //Assert
+            Assert.AreEqual(rating, user.Ratings.FirstOrDefault());
+        }
+
+
     }
 }
