@@ -87,7 +87,7 @@ namespace Noleggio.DbModels
             {
                 return this.leases;
             }
-            set
+           private set
             {
                 this.leases = value;
             }
@@ -99,7 +99,7 @@ namespace Noleggio.DbModels
             {
                 return this.comments;
             }
-            set
+            private set
             {
                 this.comments = value;
             }

@@ -54,7 +54,7 @@ namespace Noleggio.DbModels
             {
                 return this.items;
             }
-            set
+           private  set
             {
                 this.items = value;
             }

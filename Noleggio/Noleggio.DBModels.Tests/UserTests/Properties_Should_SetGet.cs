@@ -302,6 +302,46 @@ namespace Noleggio.DBModels.Tests.UserTests
             Assert.AreEqual(rating, user.Ratings.FirstOrDefault());
         }
 
+        [Test]
+        public void DeletedOn()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var rating = new Rating();
+            var deletedOn = new DateTime();
+
+            //Act 
+            user.DeletedOn = deletedOn;
+
+            //Assert
+            Assert.IsNotNull(user.DeletedOn);
+        }
+
+        [Test]
+        public void DeletedOnAndREturnSameValue()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            var rating = new Rating();
+            var deletedOn = new DateTime();
+
+            //Act 
+            user.DeletedOn = deletedOn;
+
+            //Assert
+            Assert.AreEqual(deletedOn, user.DeletedOn);
+        }
+
 
     }
 }

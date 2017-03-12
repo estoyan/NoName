@@ -149,25 +149,25 @@ namespace Noleggio.DbModels
         public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }
-            set { this.comments = value; }
+            private set { this.comments = value; }
         }
 
         public virtual ICollection<Lease> Leases
         {
             get { return this.leases; }
-            set { this.leases = value; }
+            private set { this.leases = value; }
         }
 
         public virtual ICollection<RentItem> Items
         {
             get { return this.items; }
-            set { this.items = value; }
+            private set { this.items = value; }
         }
 
         public virtual ICollection<Rating> Ratings
         {
             get { return this.ratings; }
-            set { this.ratings = value; }
+            private set { this.ratings = value; }
         }
 
         public bool IsDeleted { get; set; }
