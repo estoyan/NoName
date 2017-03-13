@@ -5,7 +5,7 @@ namespace Noleggio.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Noleggio>
+    internal sealed class Configuration : DbMigrationsConfiguration<NoleggioDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Noleggio.Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Noleggio context)
+        protected override void Seed(NoleggioDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

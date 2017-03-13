@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Noleggio.Common
 {
-    public static class Constants
+    public static class NoleggioConstants
     {
         public const int UserMimiumAge = 18;
 

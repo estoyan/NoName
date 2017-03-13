@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Noleggio.Web.Models;
+using Noleggio.Identity;
 
 namespace Noleggio.Web.Controllers
 {

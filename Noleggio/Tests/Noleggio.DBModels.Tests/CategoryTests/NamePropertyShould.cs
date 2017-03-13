@@ -36,7 +36,7 @@ namespace Noleggio.DBModels.Tests.CategoryTests
             var name = fixture.Create<string>().Substring(0, 10);
             var category = new Category(name);
             var shortName = "anyName";
-            shortName = shortName.Substring(0, Constants.CategoryNameMinLenght - 1);
+            shortName = shortName.Substring(0, NoleggioConstants.CategoryNameMinLenght - 1);
             //Act&Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => category.Name = shortName);
         }
@@ -49,7 +49,7 @@ namespace Noleggio.DBModels.Tests.CategoryTests
             var name = fixture.Create<string>().Substring(0, 10);
             var category = new Category(name);
             var longname = "anyName_longenought_sdasjisdhaduaspiudaspudaspidusapiduaspijdhapidjaspiudaspiudpiasudapioudspiadusapiduaspisduaspiudaspioduapiduaspiduasp";
-            longname = longname.Substring(0, Constants.CategoryNameMaxLenght + 1);
+            longname = longname.Substring(0, NoleggioConstants.CategoryNameMaxLenght + 1);
             //Act&Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => category.Name = longname);
         }

@@ -10,8 +10,8 @@ namespace Noleggio.DbModels
     public class Category: IDeletableEntity
     {
 
-        readonly string CategoryNameMinLenghtExceptionMessage = string.Format("Category name cannot be less than {0} symbols", Constants.CategoryNameMinLenght);
-        readonly string CategoryNameMaxLenghtExceptionMessage = string.Format("Category name cannot be more than {0} symbols", Constants.CategoryNameMaxLenght);
+        readonly string CategoryNameMinLenghtExceptionMessage = string.Format("Category name cannot be less than {0} symbols", NoleggioConstants.CategoryNameMinLenght);
+        readonly string CategoryNameMaxLenghtExceptionMessage = string.Format("Category name cannot be more than {0} symbols", NoleggioConstants.CategoryNameMaxLenght);
         private string name;
 
         private ICollection<RentItem> items;
@@ -29,8 +29,8 @@ namespace Noleggio.DbModels
         public Guid ID { get; private set; }
 
         [Required]
-        [MinLength(Constants.CategoryNameMinLenght)]
-        [MaxLength(Constants.CategoryNameMaxLenght)]
+        [MinLength(NoleggioConstants.CategoryNameMinLenght)]
+        [MaxLength(NoleggioConstants.CategoryNameMaxLenght)]
         public string Name
         {
             get
@@ -41,8 +41,8 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(name)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, CategoryNameMinLenghtExceptionMessage).IsLessThan(Constants.CategoryNameMinLenght).Throw();
-                Guard.WhenArgument(value.Length, CategoryNameMaxLenghtExceptionMessage).IsGreaterThan(Constants.CategoryNameMaxLenght).Throw();
+                Guard.WhenArgument(value.Length, CategoryNameMinLenghtExceptionMessage).IsLessThan(NoleggioConstants.CategoryNameMinLenght).Throw();
+                Guard.WhenArgument(value.Length, CategoryNameMaxLenghtExceptionMessage).IsGreaterThan(NoleggioConstants.CategoryNameMaxLenght).Throw();
 
                 this.name = value;
             }

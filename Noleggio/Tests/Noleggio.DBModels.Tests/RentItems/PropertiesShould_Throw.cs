@@ -36,7 +36,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var desciption = "random string";
             var item = new RentItem(user, category, desciption);
-            var description = new string('c', Constants.CommentDescriptionMaxLength + 1);
+            var description = new string('c', NoleggioConstants.CommentDescriptionMaxLength + 1);
             
             //Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => item.Description = description);
@@ -66,7 +66,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var desciption = "random string";
             var item = new RentItem(user, category, desciption);
-            var image = new string('c', Constants.ImagePathLength + 1);
+            var image = new string('c', NoleggioConstants.ImagePathLength + 1);
 
             //Act & Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => item.ImageLocation = image);

@@ -46,7 +46,7 @@ namespace Noleggio.DbModels
         public virtual Category Category { get; private set; }
 
         [Required]
-        [MaxLength(Constants.CommentMaxLength)]
+        [MaxLength(NoleggioConstants.CommentMaxLength)]
         public string Description
         {
             get
@@ -57,14 +57,14 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(DescriptionLength, Constants.CommentMaxLength)).IsGreaterThan(Constants.CommentMaxLength).Throw();
+                Guard.WhenArgument(value.Length, string.Format(DescriptionLength, NoleggioConstants.CommentMaxLength)).IsGreaterThan(NoleggioConstants.CommentMaxLength).Throw();
 
                 this.description = value;
             }
         }
 
         [Required]
-        [MaxLength(Constants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
+        [MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
         public string ImageLocation
         {
             get
@@ -75,7 +75,7 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(imagePath)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(ImagePathTooLong, Constants.ImagePathLength)).IsGreaterThan(Constants.ImagePathLength).Throw();
+                Guard.WhenArgument(value.Length, string.Format(ImagePathTooLong, NoleggioConstants.ImagePathLength)).IsGreaterThan(NoleggioConstants.ImagePathLength).Throw();
 
                 this.imagePath = value;
             }

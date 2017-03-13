@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Noleggio.Common;
 using System.ComponentModel.DataAnnotations.Schema;
-//using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 
 namespace Noleggio.DbModels
 {
-    public class User : IDeletableEntity
+    public class User : IdentityUser, IDeletableEntity
     {
 
         const string ExceptionMiminumAgeMessage = "Mimimum allowed age is {0}";
@@ -37,13 +40,16 @@ namespace Noleggio.DbModels
             this.IsDeleted = false;
         }
 
-        public User(Guid aspNetUserId, string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
+        public User(/*Guid aspNetUserId,*/ string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
             : this()
         {
-            Guard.WhenArgument(aspNetUserId, nameof(aspNetUserId)).IsEmptyGuid().Throw();
+            //Guard.WhenArgument(aspNetUserId, nameof(aspNetUserId)).IsEmptyGuid().Throw();
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
 
-            this.Id = aspNetUserId;
+            //This is commeted because of ASPNET Identity check is it working 
+            // for the same reason and User unit tests are commented
+            
+            //this.Id = aspNetUserId;
             this.Username = email;
             //this.Email = email;
             this.FirstName = firstName;
@@ -53,14 +59,16 @@ namespace Noleggio.DbModels
             this.Address = address;
         }
 
-        public Guid Id { get; private set; }
+        //This is commeted because of ASPNET Identity check is it working 
+        // for the same reason and User unit tests are commented
+        //public Guid Id { get; private set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Username { get; private set; }
 
         [Required]
-        [StringLength(Constants.UserFirstNameMaximumLenght, MinimumLength = Constants.UserClassMinimumStringLenght)]
+        [StringLength(NoleggioConstants.UserFirstNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string FirstName
         {
             get
@@ -71,15 +79,15 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(firstName)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(FirstNameLengthExceptionMessage, Constants.UserClassMinimumStringLenght, Constants.UserFirstNameMaximumLenght))
-                     .IsLessThan(Constants.UserClassMinimumStringLenght)
-                     .IsGreaterThan(Constants.UserFirstNameMaximumLenght).Throw();
+                Guard.WhenArgument(value.Length, string.Format(FirstNameLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserFirstNameMaximumLenght))
+                     .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
+                     .IsGreaterThan(NoleggioConstants.UserFirstNameMaximumLenght).Throw();
                 this.firstName = value;
             }
         }
 
         [Required]
-        [StringLength(Constants.UserLastNameMaximumLenght, MinimumLength = Constants.UserClassMinimumStringLenght)]
+        [StringLength(NoleggioConstants.UserLastNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string LastName
         {
             get
@@ -89,15 +97,15 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(LastName)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(LastNameLengthExceptionMessage, Constants.UserClassMinimumStringLenght, Constants.UserLastNameMaximumLenght))
-                   .IsLessThan(Constants.UserClassMinimumStringLenght)
-                   .IsGreaterThan(Constants.UserLastNameMaximumLenght).Throw();
+                Guard.WhenArgument(value.Length, string.Format(LastNameLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserLastNameMaximumLenght))
+                   .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
+                   .IsGreaterThan(NoleggioConstants.UserLastNameMaximumLenght).Throw();
                 this.lastName = value;
             }
         }
 
         [Required]
-        [StringLength(Constants.UserCityMaximumLength, MinimumLength = Constants.UserClassMinimumStringLenght)]
+        [StringLength(NoleggioConstants.UserCityMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string City
         {
             get
@@ -108,15 +116,15 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(city)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(CityLengthExceptionMessage, Constants.UserClassMinimumStringLenght, Constants.UserCityMaximumLength))
-                  .IsLessThan(Constants.UserClassMinimumStringLenght)
-                  .IsGreaterThan(Constants.UserCityMaximumLength).Throw();
+                Guard.WhenArgument(value.Length, string.Format(CityLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserCityMaximumLength))
+                  .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
+                  .IsGreaterThan(NoleggioConstants.UserCityMaximumLength).Throw();
                 this.city = value;
             }
         }
 
         [Required]
-        [StringLength(Constants.UserAddressMaximumLength, MinimumLength = Constants.UserClassMinimumStringLenght)]
+        [StringLength(NoleggioConstants.UserAddressMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string Address
         {
             get
@@ -127,9 +135,9 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(address)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(AddressLengthExceptionMessage, Constants.UserClassMinimumStringLenght, Constants.UserAddressMaximumLength))
-                  .IsLessThan(Constants.UserClassMinimumStringLenght)
-                  .IsGreaterThan(Constants.UserAddressMaximumLength).Throw();
+                Guard.WhenArgument(value.Length, string.Format(AddressLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserAddressMaximumLength))
+                  .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
+                  .IsGreaterThan(NoleggioConstants.UserAddressMaximumLength).Throw();
 
                 this.address = value;
             }
@@ -174,6 +182,15 @@ namespace Noleggio.DbModels
 
         [DataType(DataType.Date)]
         public DateTime? DeletedOn { get; set; }
+
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
     }
 
 }

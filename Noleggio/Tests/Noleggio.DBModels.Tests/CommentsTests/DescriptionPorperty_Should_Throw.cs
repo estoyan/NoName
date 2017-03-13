@@ -54,7 +54,7 @@ namespace Noleggio.DBModels.Tests.CommentsTests
             var description = "randomText";
             var commet = new Comment(user, item, description);
             var deletedDate = fixture.Create<DateTime>();
-            var newDescription = new String('x',Constants.CommentDescriptionMaxLength+1);
+            var newDescription = new String('x',NoleggioConstants.CommentDescriptionMaxLength+1);
 
             //Act&Assert
             Assert.Throws<ArgumentOutOfRangeException>(() => commet.Description = newDescription);

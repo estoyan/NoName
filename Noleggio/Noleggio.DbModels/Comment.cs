@@ -40,7 +40,7 @@ namespace Noleggio.DbModels
         public virtual RentItem Item { get; private set; }
 
         [Required]
-        [MaxLength(Constants.CommentDescriptionMaxLength)]
+        [MaxLength(NoleggioConstants.CommentDescriptionMaxLength)]
         public string Description
         {
             get
@@ -50,7 +50,7 @@ namespace Noleggio.DbModels
             set
             {
                 Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(DescriptionMaxLenghtExceptionMessage, Constants.CommentDescriptionMaxLength)).IsGreaterThan(Constants.CommentDescriptionMaxLength).Throw();
+                Guard.WhenArgument(value.Length, string.Format(DescriptionMaxLenghtExceptionMessage, NoleggioConstants.CommentDescriptionMaxLength)).IsGreaterThan(NoleggioConstants.CommentDescriptionMaxLength).Throw();
                 this.description = value;
             }
         }

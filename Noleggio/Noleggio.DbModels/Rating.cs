@@ -42,8 +42,8 @@ namespace Noleggio.DbModels
 
             set
             {
-                Guard.WhenArgument(value, string.Format(MinRateExceptionMessage, Constants.MinRate)).IsLessThan(Constants.MinRate).Throw();
-                Guard.WhenArgument(value, string.Format(MaxRateExceptionMessage, Constants.MaxRate)).IsGreaterThan(Constants.MaxRate).Throw();
+                Guard.WhenArgument(value, string.Format(MinRateExceptionMessage, NoleggioConstants.MinRate)).IsLessThan(NoleggioConstants.MinRate).Throw();
+                Guard.WhenArgument(value, string.Format(MaxRateExceptionMessage, NoleggioConstants.MaxRate)).IsGreaterThan(NoleggioConstants.MaxRate).Throw();
                 this.rate = value;
             }
         }
