@@ -136,7 +136,6 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var desciption = "random string";
             var comment = new Comment();
-            var deletedOn = new DateTime();
 
 
             //Act
