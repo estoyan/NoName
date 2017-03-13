@@ -48,9 +48,9 @@ namespace Noleggio.DbModels
 
             //This is commeted because of ASPNET Identity check is it working 
             // for the same reason and User unit tests are commented
-            
+
             //this.Id = aspNetUserId;
-            this.Username = email;
+            //this.Username = email;
             //this.Email = email;
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -61,13 +61,13 @@ namespace Noleggio.DbModels
 
         //This is commeted because of ASPNET Identity check is it working 
         // for the same reason and User unit tests are commented
-        //public Guid Id { get; private set; }
+        //public override Guid Id { get; private set; }
 
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Username { get; private set; }
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        //public string Username { get; private set; }
 
-        [Required]
+        //[Required]
         [StringLength(NoleggioConstants.UserFirstNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string FirstName
         {
@@ -86,7 +86,7 @@ namespace Noleggio.DbModels
             }
         }
 
-        [Required]
+        //[Required]
         [StringLength(NoleggioConstants.UserLastNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string LastName
         {
@@ -104,7 +104,7 @@ namespace Noleggio.DbModels
             }
         }
 
-        [Required]
+        //[Required]
         [StringLength(NoleggioConstants.UserCityMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string City
         {
@@ -123,7 +123,7 @@ namespace Noleggio.DbModels
             }
         }
 
-        [Required]
+        //[Required]
         [StringLength(NoleggioConstants.UserAddressMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string Address
         {
@@ -144,7 +144,7 @@ namespace Noleggio.DbModels
         }
 
         [DataType(DataType.Date)]
-        [Required]
+        //[Required]
         public DateTime? DateOfBirth { get; private set; }
 
         [NotMapped]

@@ -8,7 +8,7 @@ namespace Noleggio.Data
     using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
 
-    public class NoleggioDbContext : DbContext, INoleggioDbContext
+    public class NoleggioDbContext : IdentityDbContext<User>, INoleggioDbContext
     {
         // Your context has been configured to use a 'Noleggio' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -17,12 +17,12 @@ namespace Noleggio.Data
         // If you wish to target a different database and/or database provider, modify the 'Noleggio' 
         // connection string in the application configuration file.
         public NoleggioDbContext()
-            : base("Noleggio")
+            : base("Noleggio", throwIfV1Schema: false)
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NoleggioDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<NoleggioDbContext>());
         }
 
-        public virtual IDbSet<User> Users { get; set; }
+        //public virtual IDbSet<User> Users { get; set; }
 
         public virtual IDbSet<RentItem> RentItems { get; set; }
 
@@ -42,13 +42,29 @@ namespace Noleggio.Data
             base.SaveChanges();
         }
 
+        public static NoleggioDbContext Create()
+        {
+            return new NoleggioDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+
+            //modelBuilder.Entity<Expense>().HasOptional(m => m.PaidBy)
+            //  .WithMany(m => m.ExpensesPaid).HasForeignKey(m => m.PaidById);
+
+            //modelBuilder.Entity<Expense>().HasOptional(m => m.AssignedUser)
+            // .WithMany(m => m.ExpensesWillPay).HasForeignKey(m => m.AssignedUserId);
         }
 
 

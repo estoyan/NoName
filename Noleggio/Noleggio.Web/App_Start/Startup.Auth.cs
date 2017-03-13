@@ -8,6 +8,7 @@ using Owin;
 using Noleggio.Web.Models;
 using Noleggio.Identity;
 using Noleggio.DbModels;
+using Noleggio.Data;
 
 namespace Noleggio.Web
 {
@@ -17,7 +18,7 @@ namespace Noleggio.Web
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(NoleggioDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
