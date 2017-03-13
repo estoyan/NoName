@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.DbModels", "Nolegg
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0CF80C7E-C8D5-4415-9FF4-8ABDC2793D36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.DBModels.Tests", "Noleggio.DBModels.Tests\Noleggio.DBModels.Tests.csproj", "{C3F73AD6-799F-49D0-9AA9-E0B58B813021}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Common", "Noleggio.Common\Noleggio.Common.csproj", "{8169DEFC-9158-4CD6-98DD-C52A473A226A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Data.Tests", "Noleggio.Data.Tests\Noleggio.Data.Tests.csproj", "{6D921B75-5603-480C-8E5B-C5C587CA802B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Data.Tests", "Tests\Noleggio.Data.Tests\Noleggio.Data.Tests.csproj", "{6D921B75-5603-480C-8E5B-C5C587CA802B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.DBModels.Tests", "Tests\Noleggio.DBModels.Tests\Noleggio.DBModels.Tests.csproj", "{C3F73AD6-799F-49D0-9AA9-E0B58B813021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +39,6 @@ Global
 		{69E11A1F-295E-4743-A30E-1BA7F99B9991}.Release|Any CPU.Build.0 = Release|Any CPU
 		{69E11A1F-295E-4743-A30E-1BA7F99B9991}.Release|x86.ActiveCfg = Release|Any CPU
 		{69E11A1F-295E-4743-A30E-1BA7F99B9991}.Release|x86.Build.0 = Release|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|x86.Build.0 = Debug|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|x86.ActiveCfg = Release|Any CPU
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|x86.Build.0 = Release|Any CPU
 		{8169DEFC-9158-4CD6-98DD-C52A473A226A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8169DEFC-9158-4CD6-98DD-C52A473A226A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8169DEFC-9158-4CD6-98DD-C52A473A226A}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -63,12 +55,20 @@ Global
 		{6D921B75-5603-480C-8E5B-C5C587CA802B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D921B75-5603-480C-8E5B-C5C587CA802B}.Release|x86.ActiveCfg = Release|Any CPU
 		{6D921B75-5603-480C-8E5B-C5C587CA802B}.Release|x86.Build.0 = Release|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Debug|x86.Build.0 = Debug|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|x86.ActiveCfg = Release|Any CPU
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C3F73AD6-799F-49D0-9AA9-E0B58B813021} = {0CF80C7E-C8D5-4415-9FF4-8ABDC2793D36}
 		{6D921B75-5603-480C-8E5B-C5C587CA802B} = {0CF80C7E-C8D5-4415-9FF4-8ABDC2793D36}
+		{C3F73AD6-799F-49D0-9AA9-E0B58B813021} = {0CF80C7E-C8D5-4415-9FF4-8ABDC2793D36}
 	EndGlobalSection
 EndGlobal
