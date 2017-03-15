@@ -9,10 +9,7 @@ namespace Noleggio.DbModels
 {
     public class RentItem: IDeletableEntity
     {
-        const string DescriptionLength = "Item description cannot be longer than {0} symbols";
         const string ImagePathTooLong = "Path to image cannot be longer than  100 symbols";
-        private string description;
-        private string imagePath;
 
         private ICollection<Comment> comments;
         private ICollection<Lease> leases;
@@ -47,39 +44,11 @@ namespace Noleggio.DbModels
 
         [Required]
         [MaxLength(NoleggioConstants.CommentMaxLength)]
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(DescriptionLength, NoleggioConstants.CommentMaxLength)).IsGreaterThan(NoleggioConstants.CommentMaxLength).Throw();
-
-                this.description = value;
-            }
-        }
-
+        public string Description { get; set; }
+       
         [Required]
         [MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
-        public string ImageLocation
-        {
-            get
-            {
-                return this.imagePath;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, nameof(imagePath)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(ImagePathTooLong, NoleggioConstants.ImagePathLength)).IsGreaterThan(NoleggioConstants.ImagePathLength).Throw();
-
-                this.imagePath = value;
-            }
-        }
+        public string ImageLocation { get; set; }
 
         public virtual ICollection<Lease> Leases
         {

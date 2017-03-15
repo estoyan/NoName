@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity;
+using Noleggio.Common;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Noleggio.Web.Models
@@ -68,6 +71,33 @@ namespace Noleggio.Web.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(NoleggioConstants.UserFirstNameMaximumLenght, ErrorMessage ="{0} трябва да бъде между {2} и {1} символа!", MinimumLength=NoleggioConstants.UserClassMinimumStringLenght)]
+        [Display(Name = "Име")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(NoleggioConstants.UserLastNameMaximumLenght, ErrorMessage = "{0} трябва да бъде между {2} и {1} символа!!", MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
+        [Display(Name = "Фамилия")]
+        public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Дата на Раждане")]
+        public DateTime? DateOfBirth { get; set; }
+
+        [Required]
+        [StringLength(NoleggioConstants.UserCityMaximumLength, ErrorMessage = "{0} трябва да бъде между {2} и {1} символа!!", MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
+        [Display(Name = "Град")]
+        public string City { get; set; }
+
+
+        [Required]
+        [StringLength(NoleggioConstants.UserAddressMaximumLength, ErrorMessage = "{0} трябва да бъде между {2} и {1} символа!!", MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
+        [Display(Name = "Адрес")]
+        public string Address { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

@@ -8,9 +8,6 @@ namespace Noleggio.DbModels
 {
     public class Comment: IDeletableEntity
     {
-        const string DescriptionMaxLenghtExceptionMessage = "Comment  cannot be more than {0} symbols";
-        private string description;
-
         public Comment()
         {
             this.Date = DateTime.Now;
@@ -41,20 +38,8 @@ namespace Noleggio.DbModels
 
         [Required]
         [MaxLength(NoleggioConstants.CommentDescriptionMaxLength)]
-        public string Description
-        {
-            get
-            {
-                return this.description;
-            }
-            set
-            {
-                Guard.WhenArgument(value, nameof(description)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(DescriptionMaxLenghtExceptionMessage, NoleggioConstants.CommentDescriptionMaxLength)).IsGreaterThan(NoleggioConstants.CommentDescriptionMaxLength).Throw();
-                this.description = value;
-            }
-        }
-
+        public string Description { get; set; }
+    
         [Required]
         public DateTime Date { get; private set; }
 

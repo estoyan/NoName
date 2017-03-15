@@ -300,6 +300,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Noleggio.Common\Noleggio.Common.csproj">
+      <Project>{8169DEFC-9158-4CD6-98DD-C52A473A226A}</Project>
+      <Name>Noleggio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Noleggio.Data\Noleggio.Data.csproj">
       <Project>{c846d41b-3d90-4f84-aa46-4a6ef4518a20}</Project>
       <Name>Noleggio.Data</Name>

@@ -34,8 +34,20 @@
       <HintPath>..\..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
@@ -51,6 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,7 +79,6 @@
     <Compile Include="CategoryTests\PropertiesShould.cs" />
     <Compile Include="CommentsTests\ConstructorShould_Throw.cs" />
     <Compile Include="CommentsTests\Constructor_Should.cs" />
-    <Compile Include="CommentsTests\DescriptionPorperty_Should_Throw.cs" />
     <Compile Include="CommentsTests\PropertiesShould.cs" />
     <Compile Include="LeaseTests\Constructor_Should.cs" />
     <Compile Include="LeaseTests\Constructor_Should_Throw.cs" />
@@ -75,7 +87,6 @@
     <Compile Include="RatingTests\Constructor_Should.cs" />
     <Compile Include="RentItems\ConstructorShould_Throw.cs" />
     <Compile Include="RentItems\Constructor_Should.cs" />
-    <Compile Include="RentItems\PropertiesShould_Throw.cs" />
     <Compile Include="RentItems\Properties_Should.cs" />
     <Compile Include="UserTests\ConstructorShould_Initialize_Collections.cs" />
     <Compile Include="UserTests\Constructor_Should_Create_NewInstance.cs" />
@@ -97,6 +108,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,11 +26,6 @@ namespace Noleggio.DbModels
         private ICollection<RentItem> items;
         private ICollection<Rating> ratings;
 
-        private string lastName;
-        private string firstName;
-        private string city;
-        private string address;
-
         public User()
         {
             this.comments = new HashSet<Comment>();
@@ -46,12 +41,6 @@ namespace Noleggio.DbModels
             //Guard.WhenArgument(aspNetUserId, nameof(aspNetUserId)).IsEmptyGuid().Throw();
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
 
-            //This is commeted because of ASPNET Identity check is it working 
-            // for the same reason and User unit tests are commented
-
-            //this.Id = aspNetUserId;
-            //this.Username = email;
-            //this.Email = email;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;
@@ -59,101 +48,31 @@ namespace Noleggio.DbModels
             this.Address = address;
         }
 
-        //This is commeted because of ASPNET Identity check is it working 
-        // for the same reason and User unit tests are commented
-        //public override Guid Id { get; private set; }
-
-        //[Required]
-        //[DataType(DataType.EmailAddress)]
-        //public string Username { get; private set; }
-
-        //[Required]
+        [Required]
         [StringLength(NoleggioConstants.UserFirstNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
-        public string FirstName
-        {
-            get
-            {
-                return this.firstName;
-            }
+        public string FirstName { get; set;  }
+     
 
-            set
-            {
-                Guard.WhenArgument(value, nameof(firstName)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(FirstNameLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserFirstNameMaximumLenght))
-                     .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
-                     .IsGreaterThan(NoleggioConstants.UserFirstNameMaximumLenght).Throw();
-                this.firstName = value;
-            }
-        }
-
-        //[Required]
+        [Required]
         [StringLength(NoleggioConstants.UserLastNameMaximumLenght, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
-        public string LastName
-        {
-            get
-            {
-                return this.lastName;
-            }
-            set
-            {
-                Guard.WhenArgument(value, nameof(LastName)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(LastNameLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserLastNameMaximumLenght))
-                   .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
-                   .IsGreaterThan(NoleggioConstants.UserLastNameMaximumLenght).Throw();
-                this.lastName = value;
-            }
-        }
+        public string LastName { get; set; }
 
-        //[Required]
+        [Required]
         [StringLength(NoleggioConstants.UserCityMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
-        public string City
-        {
-            get
-            {
-                return this.city;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, nameof(city)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(CityLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserCityMaximumLength))
-                  .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
-                  .IsGreaterThan(NoleggioConstants.UserCityMaximumLength).Throw();
-                this.city = value;
-            }
-        }
+        public string City { get; set; }
+     
 
         //[Required]
         [StringLength(NoleggioConstants.UserAddressMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
-        public string Address
-        {
-            get
-            {
-                return this.address;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, nameof(address)).IsNullOrEmpty().Throw();
-                Guard.WhenArgument(value.Length, string.Format(AddressLengthExceptionMessage, NoleggioConstants.UserClassMinimumStringLenght, NoleggioConstants.UserAddressMaximumLength))
-                  .IsLessThan(NoleggioConstants.UserClassMinimumStringLenght)
-                  .IsGreaterThan(NoleggioConstants.UserAddressMaximumLength).Throw();
-
-                this.address = value;
-            }
-        }
-
+        public string Address { get; set; }
+     
+        [Required]
         [DataType(DataType.Date)]
-        //[Required]
-        public DateTime? DateOfBirth { get; private set; }
+        public DateTime? DateOfBirth { get;  set; }
 
         [NotMapped]
         public byte? Age => Calculator.Age(this.DateOfBirth);
-
-
-        //[Required]
-        //public string Email { get; set; }
-
+        
         public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }

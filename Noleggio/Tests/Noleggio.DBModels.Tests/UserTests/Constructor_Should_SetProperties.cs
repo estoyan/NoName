@@ -1,98 +1,98 @@
-﻿//using Noleggio.DbModels;
-//using NUnit.Framework;
-//using Ploeh.AutoFixture;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using Noleggio.DbModels;
+using NUnit.Framework;
+using Ploeh.AutoFixture;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace Noleggio.DBModels.Tests.UserTests
-//{
-//    [TestFixture]
-//    public class Constructor_Should_SetProperties
-//    {
-//        [Test]
-//        public void Initialize_Comments()
-//        {
-//            //Arange
-//            var fixture = new Fixture();
-//            var guid = fixture.Create<Guid>();
-//            var randomString = fixture.Create<string>().Substring(0, 10);
-//            var dateOfbirth = fixture.Create<DateTime>();
+namespace Noleggio.DBModels.Tests.UserTests
+{
+    [TestFixture]
+    public class Constructor_Should_SetProperties
+    {
+        [Test]
+        public void Initialize_Comments()
+        {
+            //Arange
+            var fixture = new Fixture();
+            var guid = fixture.Create<Guid>();
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
 
-//            //Act
-//            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
+            //Act
+            var user = new User( randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
-//            //Assert
-//            Assert.IsNotNull(user.Comments);
-//        }
+            //Assert
+            Assert.IsNotNull(user.Comments);
+        }
 
-//        [Test]
-//        public void Initialize_Leases()
-//        {
-//            //Arange
-//            var fixture = new Fixture();
-//            var guid = fixture.Create<Guid>();
-//            var randomString = fixture.Create<string>().Substring(0, 10);
-//            var dateOfbirth = fixture.Create<DateTime>();
+        [Test]
+        public void Initialize_Leases()
+        {
+            //Arange
+            var fixture = new Fixture();
+            var guid = fixture.Create<Guid>();
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
 
-//            //Act
-//            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
+            //Act
+            var user = new User( randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
-//            //Assert
-//            Assert.IsNotNull(user.Leases);
-//        }
+            //Assert
+            Assert.IsNotNull(user.Leases);
+        }
 
-//        [Test]
-//        public void Initialize_RentItems()
-//        {
-//            //Arange
-//            var fixture = new Fixture();
-//            var guid = fixture.Create<Guid>();
-//            var randomString = fixture.Create<string>().Substring(0, 10);
-//            var dateOfbirth = fixture.Create<DateTime>();
+        [Test]
+        public void Initialize_RentItems()
+        {
+            //Arange
+            var fixture = new Fixture();
+            var guid = fixture.Create<Guid>();
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
 
-//            //Act
-//            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
+            //Act
+            var user = new User( randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
-//            //Assert
-//            Assert.IsNotNull(user.Items);
-//        }
+            //Assert
+            Assert.IsNotNull(user.Items);
+        }
 
-//        [Test]
-//        public void Initialize_Ratings()
-//        {
-//            //Arange
-//            var fixture = new Fixture();
-//            var guid = fixture.Create<Guid>();
-//            var randomString = fixture.Create<string>().Substring(0, 10);
-//            var dateOfbirth = fixture.Create<DateTime>();
+        [Test]
+        public void Initialize_Ratings()
+        {
+            //Arange
+            var fixture = new Fixture();
+            var guid = fixture.Create<Guid>();
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
 
-//            //Act
-//            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, randomString);
+            //Act
+            var user = new User( randomString, randomString, randomString, dateOfbirth, randomString, randomString);
 
-//            //Assert
-//            Assert.IsNotNull(user.Ratings);
-//        }
+            //Assert
+            Assert.IsNotNull(user.Ratings);
+        }
 
 
-//        [Test]
-//        public void SetIsDeletedFalse()
-//        {
-//            //Arange
-//            var fixture = new Fixture();
-//            Guid guid = fixture.Create<Guid>();
-//            var address = fixture.Create<string>().Substring(0, 10);
-//            var randomString = fixture.Create<string>().Substring(0, 10);
-//            var dateOfbirth = fixture.Create<DateTime>();
-//            var rating = new Rating();
+        [Test]
+        public void SetIsDeletedFalse()
+        {
+            //Arange
+            var fixture = new Fixture();
+            Guid guid = fixture.Create<Guid>();
+            var address = fixture.Create<string>().Substring(0, 10);
+            var randomString = fixture.Create<string>().Substring(0, 10);
+            var dateOfbirth = fixture.Create<DateTime>();
+            var rating = new Rating();
 
-//            //Act 
-//            var user = new User(guid, randomString, randomString, randomString, dateOfbirth, randomString, address);
+            //Act 
+            var user = new User( randomString, randomString, randomString, dateOfbirth, randomString, address);
 
-//            //Assert
-//            Assert.AreEqual(false, user.IsDeleted);
-//        }
-//    }
-//}
+            //Assert
+            Assert.AreEqual(false, user.IsDeleted);
+        }
+    }
+}
