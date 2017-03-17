@@ -18,9 +18,11 @@ namespace Noleggio.Data.Contracts
 
         IDbSet<Comment> Comments { get; set; }
 
+        IDbSet<Category> Categories { get; set; }
+
         IDbSet<Lease> Leases { get; set; }
 
-        IDbSet<Category> MainCategory { get; set; }
+        //IDbSet<Category> MainCategory { get; set; }
 
         IDbSet<TEntity> Set<TEntity>() where TEntity : class;
 

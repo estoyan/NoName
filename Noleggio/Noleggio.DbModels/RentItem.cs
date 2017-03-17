@@ -38,6 +38,10 @@ namespace Noleggio.DbModels
         public Guid OwnerId { get; private set; }
         public virtual User Owner { get; private set; }
 
+        //TODO add location
+        //[Required]
+        // public virtual string Location{get; set}
+
         [Required]
         public Guid CategoryId { get; private set; }
         public virtual Category Category { get; private set; }

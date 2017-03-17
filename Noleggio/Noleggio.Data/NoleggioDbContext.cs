@@ -28,9 +28,11 @@ namespace Noleggio.Data
 
         public virtual IDbSet<Comment> Comments { get; set; }
 
-        public virtual IDbSet<Category> MainCategory { get; set; }
+        //public virtual IDbSet<Category> MainCategory { get; set; }
 
         public IDbSet<Lease> Leases { get; set; }
+
+        public IDbSet<Category> Categories { get; set; }
 
         public new IDbSet<T> Set<T>() where T : class
         {
