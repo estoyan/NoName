@@ -115,10 +115,12 @@
   <ItemGroup>
     <Compile Include="Contracts\IGenericEfRepository.cs" />
     <Compile Include="Contracts\INoleggioDbContext.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NoleggioDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericEfRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
