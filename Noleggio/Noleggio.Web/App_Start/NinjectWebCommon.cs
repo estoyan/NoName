@@ -65,14 +65,12 @@ namespace Noleggio.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //    Assembly.GetAssembly(typeof(Startup))
-            //       .GetTypes()
-            //      .Where(type => (typeof(NinjectModule)).IsAssignableFrom(type) && type.Name.Contains("Module"))
-            //      .Select(type => (INinjectModule)Activator.CreateInstance(type))
-            //      .ToList()
-            //      .ForEach(instance => kernel.Load(instance));
-            //}        
-            kernel.Load(new DataNinjectModule());
+            Assembly.GetAssembly(typeof(Startup))
+               .GetTypes()
+              .Where(type => (typeof(NinjectModule)).IsAssignableFrom(type) && type.Name.Contains("Module"))
+              .Select(type => (INinjectModule)Activator.CreateInstance(type))
+              .ToList()
+              .ForEach(instance => kernel.Load(instance));
         }
     }
 }

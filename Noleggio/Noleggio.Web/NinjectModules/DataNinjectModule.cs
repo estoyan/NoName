@@ -13,12 +13,6 @@ namespace Noleggio.Web.NinjectModules
     {
         public override void Load()
         {
-            //this.Kernel.Bind(x => x.FromAssemblyContaining<NoleggioDbContext>()
-            //                        .SelectAllClasses()
-            //                        .BindDefaultInterfaces());
-
-
-
             Kernel.Bind(x =>
             {
                 x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetAssembly(typeof(INoleggioDbContext)).Location))
@@ -26,9 +20,7 @@ namespace Noleggio.Web.NinjectModules
                     .BindDefaultInterface();
             });
             this.Rebind<INoleggioDbContext>().To<NoleggioDbContext>().InRequestScope();
-
-
-            //this.Rebind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+            this.Rebind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
         }
     }
 }

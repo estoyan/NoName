@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Noleggio.DbModels;
+using Bytes2you.Validation;
 
 namespace Noleggio.Data.Repositories
 {
@@ -20,18 +21,12 @@ namespace Noleggio.Data.Repositories
 
         public GenericEfRepository(INoleggioDbContext dbContext)
         {
-            if (dbContext == null)
-            {
-                throw new ArgumentNullException("DbContext can't be null");
-            }
+            Guard.WhenArgument(dbContext, "DbContext can't be null").IsNull().Throw();
 
             this.dbContext = dbContext;
             this.dbSet = this.DbContext.Set<TEntity>();
+            Guard.WhenArgument(dbSet, string.Format("This DbSet<{0}> doesn't exist in DbContext", typeof(TEntity).Name)).IsNull().Throw();
 
-            if (this.dbSet == null)
-            {
-                throw new ArgumentNullException("This DbSet<{0}> doesn't exist in DbContext", typeof(TEntity).Name);
-            }
         }
 
 
@@ -53,20 +48,13 @@ namespace Noleggio.Data.Repositories
 
         public TEntity GetById(object id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException("Id can't be null!");
-            }
-
+            Guard.WhenArgument(id, nameof(id)).IsNull().Throw();
             return this.DbSet.Find(id);
         }
 
         public void Add(TEntity entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("Adding entity can't be null");
-            }
+            Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
 
             var entry = AttachIfDetached(entity);
             entry.State = EntityState.Added;

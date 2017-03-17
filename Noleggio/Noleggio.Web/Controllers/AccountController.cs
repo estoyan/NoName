@@ -11,20 +11,25 @@ using Microsoft.Owin.Security;
 using Noleggio.Web.Models;
 using Noleggio.Identity;
 using Noleggio.DbModels;
+using Noleggio.Services.Contracts;
 
 namespace Noleggio.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
+            : base(userService, categoryService)
+
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+   
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService) 
+            : base(userService, categoryService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

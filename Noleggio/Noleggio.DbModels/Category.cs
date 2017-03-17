@@ -29,6 +29,9 @@ namespace Noleggio.DbModels
         [MaxLength(NoleggioConstants.CategoryNameMaxLenght)]
         public string Name { get; set; }
       
+        //TODO add image property to the model
+        //public string Image { get; set; }
+
 
         public virtual ICollection<RentItem> Items
         {

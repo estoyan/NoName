@@ -1,6 +1,4 @@
 ﻿@using Microsoft.AspNet.Identity
-@using Noleggio.Web.Models
-@model LoginViewModel
 
 @if (Request.IsAuthenticated)
 {
@@ -11,7 +9,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span>
-                    <strong>@Html.ActionLink(User.Identity.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</strong>
+                    <strong>@Html.ActionLink(User.Identity.Name.Split('@')[0], "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</strong>
                     <span class="glyphicon glyphicon-chevron-down"></span>
                 </a>
                 <ul style="background-color:white;" class="dropdown-menu">
@@ -24,8 +22,8 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-8">
-                                   <p class="text-left"><strong>@User.Identity.Name</strong></p>
-                                    <p class="text-left small">@User.Identity.GetUserId()</p>
+                                    <p class="text-left"><strong>@User.Identity.Name.Split('@')[0]</strong></p>
+                                    <p class="text-left small"> @User.Identity.Name</p>
                                     <p class="text-left">
                                         <a href="#" class="btn btn-primary btn-block btn-sm">Профил</a>
                                     </p>
@@ -52,72 +50,7 @@
 
     }
 }
-        @*<ul class="nav navbar-nav navbar-right">
-                        <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                        </li>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                    </ul>
-                }
-            }
-            else
-            {
-                <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                </ul>
-            }*@
-
 else
 {
-    using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-right", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Влез<span class="caret"></span></a>
-                <ul id="login-dp" class="dropdown-menu">
-                    <li>
-                        <div class="row">
-                            <div class="col-md-12">
-                               Влез с
-                                <div class="social-buttons">
-                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-                                </div>
-                                или
-                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id= "exampleInputEmail2", @placeholder = "Имейл" })
-                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Парола" })
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                        <div class="help-block text-right"><a href="">Забравена парола ?</a></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Влез</button>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                                @Html.CheckBoxFor(m => m.RememberMe)
-                                                @Html.LabelFor(m => m.RememberMe)
-                                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="bottom text-center">
-                              
-                                <b>@Html.ActionLink("Регистрирай се", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</b>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    }
+    @Html.Partial("_LoginModel")
 }

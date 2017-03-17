@@ -11,7 +11,7 @@ namespace Noleggio.Data.Contracts
         where TEntity:class
     {
 
-        TEntity GetById(int id);
+        TEntity GetById(object id);
 
         IQueryable<TEntity> GetAll();
 

@@ -8,24 +8,32 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Noleggio.Web.Models;
 using Noleggio.Identity;
+using Noleggio.DbModels;
+using Noleggio.Services.Contracts;
 
 namespace Noleggio.Web.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController(INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
+         : base(userService, categoryService)
+
         {
+
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(  ApplicationUserManager userManager, ApplicationSignInManager signInManager, INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
+            : base(userService, categoryService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
+
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -33,9 +41,9 @@ namespace Noleggio.Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -334,7 +342,7 @@ namespace Noleggio.Web.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -385,6 +393,6 @@ namespace Noleggio.Web.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }
