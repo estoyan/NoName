@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Noleggio.Services.Contracts
 {
-    public interface INolegioGenericService<T>
+    public interface INoleggioGenericService<T>
     {
 
         T GetById(object id);

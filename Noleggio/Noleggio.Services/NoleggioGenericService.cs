@@ -4,10 +4,11 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using Noleggio.Data.Contracts;
+using Bytes2you.Validation;
 
 namespace Noleggio.Services
 {
-    public abstract class NoleggioGenericService<TEntity> : INolegioGenericService<TEntity> where TEntity : class, IDeletableEntity
+    public  class NoleggioGenericService<TEntity> : INoleggioGenericService<TEntity> where TEntity : class, IDeletableEntity
     {
 
         private readonly IGenericEfRepository<TEntity> repository;
@@ -15,15 +16,8 @@ namespace Noleggio.Services
 
         public NoleggioGenericService(IGenericEfRepository<TEntity> repository, IUnitOfWork unitOfWork)
         {
-            if (repository == null)
-            {
-                throw new ArgumentNullException("Repository cannot be null!");
-            }
-
-            if (unitOfWork == null)
-            {
-                throw new ArgumentNullException("UnitOfWork cannot be null!");
-            }
+            Guard.WhenArgument(repository, nameof(repository)).IsNull().Throw();
+            Guard.WhenArgument(unitOfWork, nameof(unitOfWork)).IsNull().Throw();
 
             this.repository = repository;
             this.unitOfWork = unitOfWork;
@@ -67,7 +61,7 @@ namespace Noleggio.Services
 
         public void Hide(TEntity entity)
         {
-            this.repository.Hide(entity);
+            this.repository.Delete(entity);
 
             using (this.UnitOfWork)
             {
@@ -87,15 +81,17 @@ namespace Noleggio.Services
 
         public TEntity GetById(object id)
         {
-            if ((int)id < 0)
-            {
-                throw new ArgumentNullException("Id can't be negative!");
-            }
+            //TODO Is it ok Id to be object instead of Guid?
+            Guard.WhenArgument(id, nameof(id)).IsNull().Throw();
+            //if ((Guid)id < 0)
+            //{
+            //    throw new ArgumentNullException("Id can't be negative!");
+            //}
 
-            if (id == null)
-            {
-                throw new ArgumentNullException("Id can't be null!");
-            }
+            //if (id == null)
+            //{
+            //    throw new ArgumentNullException("Id can't be null!");
+            //}
 
             return this.repository.GetById(id);
         }
