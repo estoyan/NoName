@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "_Categories";
+}
+
+@foreach (var category in ViewBag.Categories)
+{
+    <li><a href=""><img src="category.Image"><span>category.Name</span></a></li>
+    <li>@Html.ActionLink(category.Name, "Categories", )</li>
+}

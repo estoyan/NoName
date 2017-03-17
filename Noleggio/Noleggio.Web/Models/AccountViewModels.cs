@@ -53,7 +53,7 @@ namespace Noleggio.Web.Models
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [Display(Name = "Имейл")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "{0}та е задължителна")]
@@ -61,7 +61,7 @@ namespace Noleggio.Web.Models
         [Display(Name = "Парола")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомни ме?")]
         public bool RememberMe { get; set; }
     }
 
@@ -113,7 +113,7 @@ namespace Noleggio.Web.Models
     public class ResetPasswordViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
 
@@ -134,7 +134,7 @@ namespace Noleggio.Web.Models
     public class ForgotPasswordViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
     }
