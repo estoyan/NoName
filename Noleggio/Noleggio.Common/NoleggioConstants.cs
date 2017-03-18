@@ -26,6 +26,12 @@ namespace Noleggio.Common
 
         public const int CommentMaxLength = 200;
         public const int ImagePathLength = 100;
+        public const int DescriptionMaxLength = 200;
+
+        public const int RentItemNameMaximumLength = 30;
+        public const int RentItemLocationMaximumLength = 30;
+
+
 
     }
 }
