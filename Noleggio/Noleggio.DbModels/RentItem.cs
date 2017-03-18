@@ -20,7 +20,7 @@ namespace Noleggio.DbModels
             this.comments = new HashSet<Comment>();
         }
 
-        public RentItem(Guid user, Guid category, string description) : this()
+        public RentItem(Guid user, Guid category, string description/*, string location*/) : this()
         {
             Guard.WhenArgument(user, nameof(user)).IsEmptyGuid().Throw();
             Guard.WhenArgument(category, nameof(category)).IsEmptyGuid().Throw();
@@ -29,25 +29,30 @@ namespace Noleggio.DbModels
             this.OwnerId = user;
             this.CategoryId = category;
             this.Description = description;
+            //this.Location = location;
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; private set; }
 
         [Required]
+        [MaxLength(NoleggioConstants.RentItemNameMaximumLength)]
+        public virtual string Name { get; set; }
+
+        [Required]
         public Guid OwnerId { get; private set; }
         public virtual User Owner { get; private set; }
 
-        //TODO add location
-        //[Required]
-        // public virtual string Location{get; set}
+        [Required]
+        [MaxLength(NoleggioConstants.RentItemLocationMaximumLength)]
+        public virtual string Location { get; set; }
 
         [Required]
         public Guid CategoryId { get; private set; }
         public virtual Category Category { get; private set; }
 
         [Required]
-        [MaxLength(NoleggioConstants.CommentMaxLength)]
+        [MaxLength(NoleggioConstants.DescriptionMaxLength)]
         public string Description { get; set; }
        
         [Required]
