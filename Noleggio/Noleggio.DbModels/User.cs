@@ -71,7 +71,7 @@ namespace Noleggio.DbModels
         public DateTime? DateOfBirth { get;  set; }
 
         [NotMapped]
-        public byte? Age => Calculator.Age(this.DateOfBirth);
+        public byte? Age => AgeCalculator.Age(this.DateOfBirth);
         
         public virtual ICollection<Comment> Comments
         {

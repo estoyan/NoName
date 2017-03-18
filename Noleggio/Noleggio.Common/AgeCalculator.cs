@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Noleggio.Common
 {
-    public class Calculator
+    public class AgeCalculator
     {
         public static byte? Age(DateTime? date)
         {
