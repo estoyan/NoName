@@ -42,6 +42,7 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
       <Private>True</Private>
@@ -66,7 +67,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\AddShould.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\ConstructorShould.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\Method.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\MockedRepository.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\ProtectedPropertyDbContext_Should.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\ProtectedPropertyDbSet_Should.cs" />
+    <Compile Include="Repositories\NoleggioDbContextTests\Create.cs" />
+    <Compile Include="Repositories\NoleggioDbContextTests\HaveProperty.cs" />
+    <Compile Include="Repositories\UnitOfWorkTests\CommitShould.cs" />
+    <Compile Include="Repositories\UnitOfWorkTests\ConstructorShoud.cs" />
+    <Compile Include="Repositories\UnitOfWorkTests\FakeUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -85,6 +96,7 @@
       <Name>Noleggio.DbModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
