@@ -9,6 +9,7 @@ using Noleggio.Web.Models;
 using Noleggio.Identity;
 using Noleggio.DbModels;
 using Noleggio.Data;
+using Noleggio.Data.Contracts;
 
 namespace Noleggio.Web
 {
