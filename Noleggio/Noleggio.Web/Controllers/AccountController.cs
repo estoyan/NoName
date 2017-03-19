@@ -21,15 +21,15 @@ namespace Noleggio.Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController(INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
-            : base(userService, categoryService)
+        public AccountController( ICategoryService categoryService)
+            : base( categoryService)
 
         {
         }
 
    
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService) 
-            : base(userService, categoryService)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,ICategoryService categoryService) 
+            : base( categoryService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -73,7 +73,7 @@ namespace Noleggio.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(IBaseViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace Noleggio.Web.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.LoginView.Email, model.LoginView.Password, model.LoginView.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -90,7 +90,7 @@ namespace Noleggio.Web.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.LoginView.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");

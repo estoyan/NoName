@@ -20,16 +20,17 @@ namespace Noleggio.DbModels
             this.comments = new HashSet<Comment>();
         }
 
-        public RentItem(Guid user, Guid category, string description/*, string location*/) : this()
+        public RentItem(string user, Guid category, string description, string location) : this()
         {
-            Guard.WhenArgument(user, nameof(user)).IsEmptyGuid().Throw();
+            Guard.WhenArgument(user, nameof(user)).IsNullOrEmpty().Throw();
             Guard.WhenArgument(category, nameof(category)).IsEmptyGuid().Throw();
+            Guard.WhenArgument(location, nameof(location)).IsNullOrEmpty().Throw();
 
 
             this.OwnerId = user;
             this.CategoryId = category;
             this.Description = description;
-            //this.Location = location;
+            this.Location = location;
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -40,7 +41,7 @@ namespace Noleggio.DbModels
         public virtual string Name { get; set; }
 
         [Required]
-        public Guid OwnerId { get; private set; }
+        public string OwnerId { get; private set; }
         public virtual User Owner { get; private set; }
 
         [Required]
@@ -55,7 +56,7 @@ namespace Noleggio.DbModels
         [MaxLength(NoleggioConstants.DescriptionMaxLength)]
         public string Description { get; set; }
        
-        [Required]
+        //[Required]
         [MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
         public string ImageLocation { get; set; }
 

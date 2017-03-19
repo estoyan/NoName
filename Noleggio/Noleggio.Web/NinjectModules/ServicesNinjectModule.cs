@@ -18,11 +18,14 @@ namespace Noleggio.Web.NinjectModules
         {
             //Kernel.Bind(x =>
             //{
-            //    x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetAssembly(typeof(INolegioGenericService<T>)).Location))
+            //    x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetAssembly(typeof(IUserService)).Location))
             //       .SelectAllClasses()
             //       .BindDefaultInterface();
             //});
             Kernel.Bind(typeof(INoleggioGenericService<>)).To(typeof(NoleggioGenericService<>));
+            Kernel.Bind<IUserService>().To<UserService>();
+            Kernel.Bind<ICategoryService>().To<CategoryService>();
+            Kernel.Bind<IRentItemService>().To<RentItemService>();
         }
     }
 }

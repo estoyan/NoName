@@ -19,15 +19,15 @@ namespace Noleggio.Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController(INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
-         : base(userService, categoryService)
+        public ManageController ( ICategoryService categoryService)
+         : base( categoryService)
 
         {
 
         }
 
-        public ManageController(  ApplicationUserManager userManager, ApplicationSignInManager signInManager, INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService)
-            : base(userService, categoryService)
+        public ManageController(  ApplicationUserManager userManager, ApplicationSignInManager signInManager, ICategoryService categoryService)
+            : base(categoryService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

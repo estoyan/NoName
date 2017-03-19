@@ -1,4 +1,4 @@
-﻿namespace Noleggio.Web.AutoMapper.Contracts
+﻿namespace Noleggio.Common.Contracts
 {
     public interface IMapingService
     {

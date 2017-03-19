@@ -1,6 +1,6 @@
 ﻿using Ninject.Modules;
-using Noleggio.Web.AutoMapper;
-using Noleggio.Web.AutoMapper.Contracts;
+using Noleggio.Common;
+using Noleggio.Common.Contracts;
 
 namespace Noleggio.Web.NinjectModules
 {

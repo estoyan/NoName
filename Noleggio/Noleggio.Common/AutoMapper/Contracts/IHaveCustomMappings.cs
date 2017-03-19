@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 
-namespace Noleggio.Web.Contracts
+namespace Noleggio.Common.Contracts
 {
     public interface IHaveCustomMappings
     {

@@ -253,10 +253,6 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="AutoMapper\Contracts\IHaveCustomMappings.cs" />
-    <Compile Include="AutoMapper\Contracts\IMapFrom.cs" />
-    <Compile Include="AutoMapper\Contracts\IMapingService.cs" />
-    <Compile Include="AutoMapper\MappingService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -267,9 +263,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IBaseViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\RentItemViewModel.cs" />
+    <Compile Include="Models\RentItemsViewModel.cs" />
     <Compile Include="NinjectModules\AutoMapperModule.cs" />
     <Compile Include="NinjectModules\DataNinjectModule.cs" />
     <Compile Include="NinjectModules\ServicesNinjectModule.cs" />
@@ -363,6 +360,10 @@
     <ProjectReference Include="..\Noleggio.DbModels\Noleggio.DbModels.csproj">
       <Project>{69e11a1f-295e-4743-a30e-1ba7f99b9991}</Project>
       <Name>Noleggio.DbModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Noleggio.DtoModels\Noleggio.DtoModels.csproj">
+      <Project>{7b2b3d1d-1a3e-4013-9794-27aa13110cef}</Project>
+      <Name>Noleggio.DtoModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Noleggio.Identity\Noleggio.Identity.csproj">
       <Project>{a8814213-7edc-4852-a8e3-c3107af7d249}</Project>

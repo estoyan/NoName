@@ -1,23 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
 namespace Noleggio.Web.Models
 {
-    public class IndexViewModel
+    public class IndexViewModel:IBaseViewModel
     {
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ManageLoginsViewModel
+    public class ManageLoginsViewModel:IBaseViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
         public IList<AuthenticationDescription> OtherLogins { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
     public class FactorViewModel
@@ -25,7 +30,7 @@ namespace Noleggio.Web.Models
         public string Purpose { get; set; }
     }
 
-    public class SetPasswordViewModel
+    public class SetPasswordViewModel:IBaseViewModel
     {
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -37,9 +42,11 @@ namespace Noleggio.Web.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public LoginViewModel LoginView { get; set; }
     }
 
-    public class ChangePasswordViewModel
+    public class ChangePasswordViewModel:IBaseViewModel
     {
         [Required]
         [DataType(DataType.Password)]
@@ -56,17 +63,21 @@ namespace Noleggio.Web.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class AddPhoneNumberViewModel
+    public class AddPhoneNumberViewModel:IBaseViewModel
     {
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class VerifyPhoneNumberViewModel
+    public class VerifyPhoneNumberViewModel:IBaseViewModel
     {
         [Required]
         [Display(Name = "Code")]
@@ -76,11 +87,15 @@ namespace Noleggio.Web.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ConfigureTwoFactorViewModel
+    public class ConfigureTwoFactorViewModel:IBaseViewModel
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 }

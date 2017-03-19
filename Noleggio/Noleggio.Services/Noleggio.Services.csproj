@@ -30,12 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
       <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,11 +54,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryService.cs" />
+    <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\INoleggioGenericService.cs" />
+    <Compile Include="Contracts\IRentItemService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="NoleggioGenericService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentItemService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Noleggio.Common\Noleggio.Common.csproj">
+      <Project>{8169DEFC-9158-4CD6-98DD-C52A473A226A}</Project>
+      <Name>Noleggio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Noleggio.Data\Noleggio.Data.csproj">
       <Project>{C846D41B-3D90-4F84-AA46-4A6EF4518A20}</Project>
       <Name>Noleggio.Data</Name>
@@ -56,6 +76,10 @@
     <ProjectReference Include="..\Noleggio.DbModels\Noleggio.DbModels.csproj">
       <Project>{69E11A1F-295E-4743-A30E-1BA7F99B9991}</Project>
       <Name>Noleggio.DbModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Noleggio.DtoModels\Noleggio.DtoModels.csproj">
+      <Project>{7B2B3D1D-1A3E-4013-9794-27AA13110CEF}</Project>
+      <Name>Noleggio.DtoModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

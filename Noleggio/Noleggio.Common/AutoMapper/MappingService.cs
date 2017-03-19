@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Noleggio.Web.AutoMapper.Contracts;
+using Noleggio.Common.Contracts;
 
-namespace Noleggio.Web.AutoMapper
+namespace Noleggio.Common
 {
     public class MappingService : IMapingService
     {

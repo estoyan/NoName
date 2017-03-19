@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Noleggio.Web.Contracts
+namespace Noleggio.DtoModels
 {
-   public  interface IMapFrom<T> where T:class
+    public class Class1
     {
     }
 }

@@ -8,7 +8,7 @@ using Bytes2you.Validation;
 
 namespace Noleggio.Services
 {
-    public  class NoleggioGenericService<TEntity> : INoleggioGenericService<TEntity> where TEntity : class, IDeletableEntity
+    public abstract class NoleggioGenericService<TEntity> : INoleggioGenericService<TEntity> where TEntity : class, IDeletableEntity
     {
 
         private readonly IGenericEfRepository<TEntity> repository;

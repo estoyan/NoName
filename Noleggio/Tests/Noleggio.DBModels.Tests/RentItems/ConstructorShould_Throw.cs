@@ -14,16 +14,17 @@ namespace Noleggio.DBModels.Tests.RentItems
     {
 
         [Test]
-        public void WhenUserIsEmptyGuid()
+        public void WhenUserIsEmptyString()
         {
             //Arrange
             var fixture = new Fixture();
-            var user = new Guid();
+            var user =""; 
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act & Assert
-           Assert.Throws<ArgumentException>(()=>new RentItem(user, category, desciption));
+            Assert.Throws<ArgumentException>(() => new RentItem(user, category, desciption,location));
         }
 
 
@@ -33,11 +34,13 @@ namespace Noleggio.DBModels.Tests.RentItems
             //Arrange
             var fixture = new Fixture();
             var category = new Guid();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var desciption = "random string";
+            var location = "random string";
+
 
             //Act & Assert
-            Assert.Throws<ArgumentException>(() => new RentItem(user, category, desciption));
+            Assert.Throws<ArgumentException>(() => new RentItem(user, category, desciption,location));
         }
     }
-    }
+}

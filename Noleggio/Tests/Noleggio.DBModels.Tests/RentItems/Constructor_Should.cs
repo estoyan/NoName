@@ -17,12 +17,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.IsNotNull(item);
@@ -33,12 +34,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.IsInstanceOf<RentItem>(item);
@@ -49,12 +51,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.IsNotNull(item.Leases);
@@ -65,12 +68,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.IsNotNull(item.Comments);
@@ -81,12 +85,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.AreEqual(user, item.OwnerId);
@@ -97,12 +102,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.AreEqual(category, item.CategoryId);
@@ -112,16 +118,34 @@ namespace Noleggio.DBModels.Tests.RentItems
         public void Sets_Description()
         {
             //Arrange
-            var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+             var fixture = new Fixture();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
-            var desciption = "random string";
+            var desciption = "random string description";
+            var location = "random string";
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.AreEqual(desciption, item.Description);
+        }
+
+        [Test]
+        public void Sets_Location()
+        {
+            //Arrange
+            var fixture = new Fixture();
+            var user = fixture.Create<Guid>().ToString(); ;
+            var category = fixture.Create<Guid>();
+            var desciption = "random string";
+            var location = "random string location";
+
+            //Act
+            var item = new RentItem(user, category, desciption, location);
+
+            //Assert
+            Assert.AreEqual(location, item.Location);
         }
 
 
@@ -132,14 +156,14 @@ namespace Noleggio.DBModels.Tests.RentItems
 
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString(); ;
             var category = fixture.Create<Guid>();
             var desciption = "random string";
-            var comment = new Comment();
+            var location = "random string";
 
 
             //Act
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
             //Assert
             Assert.AreEqual(false, item.IsDeleted);

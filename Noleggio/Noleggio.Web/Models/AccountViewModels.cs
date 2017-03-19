@@ -6,27 +6,33 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Noleggio.Web.Models
 {
-    public class ExternalLoginConfirmationViewModel
+    public class ExternalLoginConfirmationViewModel: IBaseViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ExternalLoginListViewModel
+    public class ExternalLoginListViewModel: IBaseViewModel
     {
         public string ReturnUrl { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class SendCodeViewModel
+    public class SendCodeViewModel: IBaseViewModel
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
         public string ReturnUrl { get; set; }
         public bool RememberMe { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class VerifyCodeViewModel
+    public class VerifyCodeViewModel: IBaseViewModel
     {
         [Required]
         public string Provider { get; set; }
@@ -40,16 +46,20 @@ namespace Noleggio.Web.Models
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ForgotViewModel
+    public class ForgotViewModel: IBaseViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class LoginViewModel
+    public class LoginViewModel: IBaseViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [Display(Name = "Имейл")]
@@ -63,14 +73,17 @@ namespace Noleggio.Web.Models
 
         [Display(Name = "Запомни ме?")]
         public bool RememberMe { get; set; }
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel:IBaseViewModel
     {
         [Required(ErrorMessage ="{0}ът е задължителен")]
         [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
+
 
         [Required(ErrorMessage = "{0}то е задължителено")]
         [StringLength(NoleggioConstants.UserFirstNameMaximumLenght, ErrorMessage ="{0} трябва да бъде между {2} и {1} символа!", MinimumLength=NoleggioConstants.UserClassMinimumStringLenght)]
@@ -108,9 +121,12 @@ namespace Noleggio.Web.Models
         [Display(Name = "Потвърдете Паролата")]
         [Compare("Password", ErrorMessage = "Паролата и въведената за потвърждение не съвпадат!")]
         public string ConfirmPassword { get; set; }
+
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ResetPasswordViewModel
+    public class ResetPasswordViewModel: IBaseViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
@@ -129,13 +145,19 @@ namespace Noleggio.Web.Models
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
+
+        public LoginViewModel LoginView { get; set; }
+
     }
 
-    public class ForgotPasswordViewModel
+    public class ForgotPasswordViewModel: IBaseViewModel
     {
         [Required(ErrorMessage = "{0}ът е задължителен")]
         [EmailAddress(ErrorMessage = "Въвели сте не коректен {0}!")]
         [Display(Name = "Имейл")]
         public string Email { get; set; }
+
+        public LoginViewModel LoginView { get; set; }
+
     }
 }

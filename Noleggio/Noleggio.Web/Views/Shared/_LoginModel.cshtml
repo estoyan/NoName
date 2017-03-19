@@ -1,54 +1,55 @@
 ﻿@using Noleggio.Web.Models
 
-@model LoginViewModel
 
-@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-right", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Влез<span class="caret"></span></a>
-                <ul id="login-dp" class="dropdown-menu">
-                    <li>
-                        <div class="row">
-                            <div class="col-md-12">
-                                Влез с
-                                <div class="social-buttons">
-                                    <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                    <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+    @model IBaseViewModel
+
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-right", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Влез<span class="caret"></span></a>
+                    <ul id="login-dp" class="dropdown-menu">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Влез с
+                                    <div class="social-buttons">
+                                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                    </div>
+                                    или
+                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LoginView.Email, new { @class = "sr-only" })
+                                            @Html.TextBoxFor(m => m.LoginView.Email, new { @class = "form-control", @id = "exampleInputEmail2", @placeholder = "Имейл" })
+                                            @Html.ValidationMessageFor(m => m.LoginView.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LoginView.Password, new { @class = "sr-only" })
+                                            @Html.PasswordFor(m => m.LoginView.Password, new { @class = "form-control", @placeholder = "Парола" })
+                                            @Html.ValidationMessageFor(m => m.LoginView.Password, "", new { @class = "text-danger" })
+                                            <div class="help-block text-right"><a href="">Забравена парола ?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Влез</button>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox">
+                                                @Html.CheckBoxFor(m => m.LoginView.RememberMe)
+                                                @Html.LabelFor(m => m.LoginView.RememberMe)
+                                            </label>
+                                        </div>
+                                    </form>
                                 </div>
-                                или
-                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "exampleInputEmail2", @placeholder = "Имейл" })
-                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Парола" })
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                        <div class="help-block text-right"><a href="">Забравена парола ?</a></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Влез</button>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                            @Html.LabelFor(m => m.RememberMe)
-                                        </label>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="bottom text-center">
+                                <div class="bottom text-center">
 
-                                <b>@Html.ActionLink("Регистрирай се", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</b>
+                                    <b>@Html.ActionLink("Регистрирай се", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</b>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
     }

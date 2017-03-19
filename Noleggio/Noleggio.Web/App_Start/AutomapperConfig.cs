@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Noleggio.Web.Contracts;
+using Noleggio.Common.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

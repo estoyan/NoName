@@ -9,9 +9,9 @@ using Noleggio.Services.Contracts;
 namespace Noleggio.Web.Controllers
 {
     public class HomeController : BaseController
-    {
-        public HomeController(INoleggioGenericService<User> userService, INoleggioGenericService<Category> categoryService) :
-            base(userService, categoryService)
+    { 
+        public HomeController( ICategoryService categoryService) :
+            base( categoryService)
         {
         }
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Noleggio.DBModels.Tests.RentItems
 {
     [TestFixture]
-   public class Properties_Should
+    public class Properties_Should
     {
 
         [Test]
@@ -18,11 +18,12 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
-            var  newDescription = "new Descripion";
+            var location = "random string";
+            var item = new RentItem(user, category, desciption, location);
+            var newDescription = "new Descripion";
 
             //Act
             item.Description = newDescription;
@@ -36,11 +37,11 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
-            var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
             var location = "new Location";
+            var desciption = "random string";
+            var item = new RentItem(user, category, desciption, location);
 
             //Act
             item.ImageLocation = location;
@@ -54,11 +55,12 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
+            var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
-            var lease    = new Lease();
+            var item = new RentItem(user, category, desciption,location);
+            var lease = new Lease();
 
             //Act
             item.Leases.Add(lease);
@@ -72,10 +74,11 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
+            var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
             var lease = new Lease();
 
             //Act
@@ -90,10 +93,11 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
+            var location = "new Location";
+            var item = new RentItem(user, category, desciption,location);
             var comment = new Comment();
 
             //Act
@@ -108,10 +112,11 @@ namespace Noleggio.DBModels.Tests.RentItems
         {
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
+            var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
             var comment = new Comment();
 
             //Act
@@ -125,12 +130,13 @@ namespace Noleggio.DBModels.Tests.RentItems
         public void SetDeletedOnAndREturnSameValue()
         {
 
-             //Arrange
+            //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption);
+            var location = "new Location";
+            var item = new RentItem(user, category, desciption,location);
             var comment = new Comment();
             var deletedOn = new DateTime();
 
@@ -152,11 +158,12 @@ namespace Noleggio.DBModels.Tests.RentItems
 
             //Arrange
             var fixture = new Fixture();
-            var user = fixture.Create<Guid>();
+            var user = fixture.Create<Guid>().ToString();
             var category = fixture.Create<Guid>();
+            var location = "new Location";
             var desciption = "random string";
             var comment = new Comment();
-            var item = new RentItem(user, category, desciption);
+            var item = new RentItem(user, category, desciption,location);
 
 
             //Act

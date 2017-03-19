@@ -60,9 +60,9 @@ namespace Noleggio.DbModels
         [Required]
         [StringLength(NoleggioConstants.UserCityMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string City { get; set; }
-     
 
-        //[Required]
+
+        [Required]
         [StringLength(NoleggioConstants.UserAddressMaximumLength, MinimumLength = NoleggioConstants.UserClassMinimumStringLenght)]
         public string Address { get; set; }
      
