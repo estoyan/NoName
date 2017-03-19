@@ -17,6 +17,8 @@ namespace Noleggio.Data
             this.dbContext = dbContext;
         }
 
+        protected INoleggioDbContext DbContext { get { return this.dbContext; } }
+
         public void Commit()
         {
             this.dbContext.SaveChanges();
