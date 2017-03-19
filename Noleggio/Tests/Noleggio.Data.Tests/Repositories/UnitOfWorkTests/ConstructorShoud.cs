@@ -65,5 +65,13 @@ namespace Noleggio.Data.Tests.Repositories.UnitOfWorkTests
             Assert.AreSame(mockedContext.Object,actulaUnitOfWork.DbContext);
         }
 
+
+        [Test]
+        public void ThrowIfContextIsNull()
+        {
+            //Arrange & Act & Asert
+            Assert.Throws<ArgumentNullException>(() => new UnitOfWork(null));
+        }
+
     }
 }
