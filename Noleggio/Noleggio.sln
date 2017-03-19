@@ -23,9 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Services", "Nolegg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.DtoModels", "Noleggio.DtoModels\Noleggio.DtoModels.csproj", "{7B2B3D1D-1A3E-4013-9794-27AA13110CEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Services.Tests", "Noleggio.Services.Tests\Noleggio.Services.Tests.csproj", "{797EF92B-5CD6-486E-8D4C-9123175BB5C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Services.Tests", "Tests\Noleggio.Services.Tests\Noleggio.Services.Tests.csproj", "{797EF92B-5CD6-486E-8D4C-9123175BB5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Web.Tests", "Noleggio.Web.Tests\Noleggio.Web.Tests.csproj", "{8754D8A8-9C9C-4210-B577-A4DF54BDD0DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio.Web.Tests", "Tests\Noleggio.Web.Tests\Noleggio.Web.Tests.csproj", "{8754D8A8-9C9C-4210-B577-A4DF54BDD0DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
