@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Noleggio.Web.Tests
+namespace Noleggio.Services.Tests
 {
     [TestFixture]
     public class Class1
     {
-       [Test]
-       public void DummyTest()
+        [Test]
+        public void DummyTest()
         {
 
         }
