@@ -25,7 +25,7 @@ namespace Noleggio.DtoModels
         [MaxLength(NoleggioConstants.CommentMaxLength)]
         public string Description { get; set; }
 
-        public Guid CategoryId { get; set; }
+        public CategoryDtoModel Category { get; set; }
 
    
     }

@@ -10,6 +10,8 @@ using Noleggio.DtoModels;
 using Noleggio.Common.Contracts;
 using Bytes2you.Validation;
 using AutoMapper;
+using System.Collections;
+using Noleggio.DtoModels.RentItems;
 
 namespace Noleggio.Services
 {
@@ -28,6 +30,11 @@ namespace Noleggio.Services
         {
             
             base.Add(mapper.Map<RentItem>(item));
+        }
+
+        public RentItemDetaildDtoModel GetRentItemById(Guid rentItem)
+        {
+            return mapper.Map<RentItemDetaildDtoModel>(base.GetById(rentItem));
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Noleggio.DbModels
        
         //[Required]
         [MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
-        public string ImageLocation { get; set; }
+        public virtual string ImageLocation { get; set; }
 
         public virtual ICollection<Lease> Leases
         {

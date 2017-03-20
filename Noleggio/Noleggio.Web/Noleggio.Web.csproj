@@ -263,7 +263,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IBaseViewModel.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RentItemsViewModel.cs" />
@@ -335,6 +335,8 @@
     <Content Include="Views\Shared\_Categories.cshtml" />
     <Content Include="Views\Shared\_LoginModel.cshtml" />
     <Content Include="Views\RentItems\Add.cshtml" />
+    <Content Include="Views\RentItems\Added.cshtml" />
+    <Content Include="Views\RentItems\RentItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

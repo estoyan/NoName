@@ -46,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryDtoModel.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="CommentsDto\CommentsDtoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentItemDtoModel.cs" />
+    <Compile Include="RentItems\RentItemDetaildDtoModel.cs" />
+    <Compile Include="RentItems\RentItemDtoModel.cs" />
+    <Compile Include="UserDtoModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Noleggio.Common\Noleggio.Common.csproj">

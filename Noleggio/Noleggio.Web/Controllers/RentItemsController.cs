@@ -46,5 +46,11 @@ namespace Noleggio.Web.Controllers
             return View("Added");
 
         }
+
+        public ActionResult Get(Guid id)
+        {
+            var result=this.rentItemService.GetRentItemById(id);
+            return View("RentItem",result);
+        }
     }
 }

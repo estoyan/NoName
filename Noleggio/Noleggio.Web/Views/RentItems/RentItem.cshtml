@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "RentItem";
+}
+@using Noleggio.DtoModels.RentItems
+@model RentItemDetaildDtoModel
+<h2>RentItem</h2>
+
+<div>@Model.Category.Name</div>
+<div>@Model.Description</div>
+<div>@Model.Location</div>
+<div>@Model.Name</div>
+<div>@Model.Owner.FirstName</div>
+@foreach (var comment in @Model.Comments)
+{
+    <div>@comment.Description</div>
+
+}
+
