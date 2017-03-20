@@ -13,5 +13,13 @@ namespace Noleggio.Services.Tests.NoleggioGenericServiceTests
         public NoleggioGenericServiceMock(IGenericEfRepository<Category> repository, IUnitOfWork unitOfWork) : base(repository, unitOfWork)
         {
         }
+
+        public IGenericEfRepository<Category> RepositoryMock
+        {
+            get
+            {
+                return base.Repository;
+            }
+        }
     }
 }

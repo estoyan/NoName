@@ -28,7 +28,6 @@ namespace Noleggio.Services
         {
             
             base.Add(mapper.Map<RentItem>(item));
-            base.UnitOfWork.Commit();
         }
     }
 }

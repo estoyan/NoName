@@ -94,7 +94,9 @@ namespace Noleggio.Services
 
         public IQueryable<TEntity> GetDeleted()
         {
-            return this.GetAll(ent => ent.IsDeleted);
+            var reslut = this.repository.GetAll(x => x.IsDeleted);
+            return reslut;
+                //base.repository.GetAll(x => x.IsDeleted);
         }
 
         public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
