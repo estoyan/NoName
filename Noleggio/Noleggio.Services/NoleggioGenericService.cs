@@ -59,15 +59,6 @@ namespace Noleggio.Services
             }
         }
 
-        public void Hide(TEntity entity)
-        {
-            this.repository.Delete(entity);
-
-            using (this.UnitOfWork)
-            {
-                this.UnitOfWork.Commit();
-            }
-        }
 
         public void Delete(TEntity entity)
         {

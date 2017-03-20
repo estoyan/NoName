@@ -52,7 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CategoryServiceTests\ConstructorShould.cs" />
+    <Compile Include="CategoryServiceTests\GetAllCaetgoriesShould.cs" />
+    <Compile Include="NoleggioGenericServiceTests\AddShould.cs" />
+    <Compile Include="NoleggioGenericServiceTests\ConstructorShould.cs" />
+    <Compile Include="NoleggioGenericServiceTests\Delete.cs" />
+    <Compile Include="NoleggioGenericServiceTests\FakeGenericRepository.cs" />
+    <Compile Include="NoleggioGenericServiceTests\GetAllShould.cs" />
+    <Compile Include="NoleggioGenericServiceTests\GetByIdShould.cs" />
+    <Compile Include="NoleggioGenericServiceTests\UpdateShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +69,29 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Noleggio.Common\Noleggio.Common.csproj">
+      <Project>{8169DEFC-9158-4CD6-98DD-C52A473A226A}</Project>
+      <Name>Noleggio.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.Data\Noleggio.Data.csproj">
+      <Project>{C846D41B-3D90-4F84-AA46-4A6EF4518A20}</Project>
+      <Name>Noleggio.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.DbModels\Noleggio.DbModels.csproj">
+      <Project>{69E11A1F-295E-4743-A30E-1BA7F99B9991}</Project>
+      <Name>Noleggio.DbModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.DtoModels\Noleggio.DtoModels.csproj">
+      <Project>{7b2b3d1d-1a3e-4013-9794-27aa13110cef}</Project>
+      <Name>Noleggio.DtoModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.Services\Noleggio.Services.csproj">
+      <Project>{269ECA41-06F3-4C14-94BD-1491D88DB227}</Project>
+      <Name>Noleggio.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

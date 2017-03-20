@@ -13,7 +13,7 @@ using AutoMapper;
 
 namespace Noleggio.Services
 {
-    public class RentItemService :  NoleggioGenericService<RentItem>, IRentItemService, IHaveCustomMappings
+    public class RentItemService :  NoleggioGenericService<RentItem>, IRentItemService
     {
         private IMapingService mapper;
 
@@ -28,15 +28,7 @@ namespace Noleggio.Services
         {
             
             base.Add(mapper.Map<RentItem>(item));
+            base.UnitOfWork.Commit();
         }
-
-       
-
-        public void CreateMappings(IMapperConfigurationExpression config)
-        {
-            //config.CreateMap<RentItemDtoModel, RentItem>()
-                //.ForMember(dest => dest.CategoryId, opt => opt.
-        }
-
     }
 }

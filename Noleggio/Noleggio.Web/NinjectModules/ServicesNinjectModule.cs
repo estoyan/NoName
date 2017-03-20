@@ -23,7 +23,7 @@ namespace Noleggio.Web.NinjectModules
             //       .BindDefaultInterface();
             //});
             Kernel.Bind(typeof(INoleggioGenericService<>)).To(typeof(NoleggioGenericService<>));
-            Kernel.Bind<IUserService>().To<UserService>();
+            //Kernel.Bind<IUserService>().To<UserService>();
             Kernel.Bind<ICategoryService>().To<CategoryService>();
             Kernel.Bind<IRentItemService>().To<RentItemService>();
         }

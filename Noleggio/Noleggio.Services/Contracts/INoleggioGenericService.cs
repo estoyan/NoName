@@ -16,7 +16,6 @@ namespace Noleggio.Services.Contracts
 
         void Update(T entity);
 
-        void Hide(T entity);
 
         void Delete(T entity);
 
