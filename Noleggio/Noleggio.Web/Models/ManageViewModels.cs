@@ -6,7 +6,7 @@ using Microsoft.Owin.Security;
 
 namespace Noleggio.Web.Models
 {
-    public class IndexViewModel:IBaseViewModel
+    public class IndexViewModel:BaseViewModel
     {
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
@@ -17,20 +17,18 @@ namespace Noleggio.Web.Models
 
     }
 
-    public class ManageLoginsViewModel:IBaseViewModel
+    public class ManageLoginsViewModel:BaseViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
         public IList<AuthenticationDescription> OtherLogins { get; set; }
-        public LoginViewModel LoginView { get; set; }
-
     }
 
-    public class FactorViewModel
+    public class FactorViewModel:BaseViewModel
     {
         public string Purpose { get; set; }
     }
 
-    public class SetPasswordViewModel:IBaseViewModel
+    public class SetPasswordViewModel:BaseViewModel
     {
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -42,11 +40,9 @@ namespace Noleggio.Web.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        public LoginViewModel LoginView { get; set; }
     }
 
-    public class ChangePasswordViewModel:IBaseViewModel
+    public class ChangePasswordViewModel:BaseViewModel
     {
         [Required]
         [DataType(DataType.Password)]
@@ -63,21 +59,17 @@ namespace Noleggio.Web.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        public LoginViewModel LoginView { get; set; }
-
     }
 
-    public class AddPhoneNumberViewModel:IBaseViewModel
+    public class AddPhoneNumberViewModel:BaseViewModel
     {
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
         public string Number { get; set; }
-        public LoginViewModel LoginView { get; set; }
-
     }
 
-    public class VerifyPhoneNumberViewModel:IBaseViewModel
+    public class VerifyPhoneNumberViewModel:BaseViewModel
     {
         [Required]
         [Display(Name = "Code")]
@@ -87,15 +79,11 @@ namespace Noleggio.Web.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-        public LoginViewModel LoginView { get; set; }
-
     }
 
-    public class ConfigureTwoFactorViewModel:IBaseViewModel
+    public class ConfigureTwoFactorViewModel:BaseViewModel
     {
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public LoginViewModel LoginView { get; set; }
-
     }
 }

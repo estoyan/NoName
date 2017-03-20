@@ -73,7 +73,7 @@ namespace Noleggio.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(IBaseViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(BaseViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {

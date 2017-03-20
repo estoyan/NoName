@@ -5,8 +5,8 @@ using System.Web;
 
 namespace Noleggio.Web.Models
 {
-    public interface IBaseViewModel
+    public class BaseViewModel
     {
-         LoginViewModel LoginView { get; set; }
+        public  LoginViewModel LoginView { get; set; }
     }
 }

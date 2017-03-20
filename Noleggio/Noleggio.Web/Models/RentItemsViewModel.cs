@@ -2,7 +2,7 @@
 
 namespace Noleggio.Web.Models
 {
-    public class RentItemsViewModel : IBaseViewModel
+    public class RentItemsViewModel : BaseViewModel
     {
         public RentItemDtoModel Rentitem { get; set; }
         public LoginViewModel LoginView { get; set; }
