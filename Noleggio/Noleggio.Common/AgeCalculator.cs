@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,14 @@ namespace Noleggio.Common
 {
     public class AgeCalculator
     {
-        public static byte? Age(DateTime? date)
+        //private ITimeProvider timeProvider;
+
+        //public AgeCalculator(ITimeProvider timeProvider)
+        //{
+        //    Guard.WhenArgument(timeProvider, nameof(timeProvider)).IsNull().Throw();
+        //    this.timeProvider = timeProvider;
+        //}
+        public static  byte? Age(DateTime? date)
         {
             if (!date.HasValue)
             {
