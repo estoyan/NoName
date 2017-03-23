@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comment.cs" />
+    <Compile Include="Factories\IImageFactory.cs" />
     <Compile Include="Factories\ICategoryFactory.cs" />
     <Compile Include="Factories\ILeaseFactory.cs" />
     <Compile Include="Factories\IRentItemFactory.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Factories\ICommentFactory.cs" />
     <Compile Include="Factories\IUserFactory.cs" />
     <Compile Include="Contracts\IDeletableEntity.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Lease.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Rating.cs" />

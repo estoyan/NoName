@@ -32,23 +32,23 @@ namespace Noleggio.DBModels.Tests.RentItems
             Assert.AreEqual(newDescription, item.Description);
         }
 
-        [Test]
-        public void SetImageLocation()
-        {
-            //Arrange
-            var fixture = new Fixture();
-            var user = fixture.Create<Guid>().ToString();
-            var category = fixture.Create<Guid>();
-            var location = "new Location";
-            var desciption = "random string";
-            var item = new RentItem(user, category, desciption, location);
+        //[Test]
+        //public void SetImageLocation()
+        //{
+        //    //Arrange
+        //    var fixture = new Fixture();
+        //    var user = fixture.Create<Guid>().ToString();
+        //    var category = fixture.Create<Guid>();
+        //    var location = "new Location";
+        //    var desciption = "random string";
+        //    var item = new RentItem(user, category, desciption, location);
 
-            //Act
-            item.ImageLocation = location;
+        //    //Act
+        //    item.ImageLocation = location;
 
-            //Assert
-            Assert.AreEqual(location, item.ImageLocation);
-        }
+        //    //Assert
+        //    Assert.AreEqual(location, item.ImageLocation);
+        //}
 
         [Test]
         public void AddLease()
@@ -59,7 +59,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
             var lease = new Lease();
 
             //Act
@@ -78,7 +78,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
             var lease = new Lease();
 
             //Act
@@ -97,7 +97,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var desciption = "random string";
             var location = "new Location";
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
             var comment = new Comment();
 
             //Act
@@ -116,7 +116,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var location = "new Location";
             var desciption = "random string";
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
             var comment = new Comment();
 
             //Act
@@ -136,7 +136,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var category = fixture.Create<Guid>();
             var desciption = "random string";
             var location = "new Location";
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
             var comment = new Comment();
             var deletedOn = new DateTime();
 
@@ -163,7 +163,7 @@ namespace Noleggio.DBModels.Tests.RentItems
             var location = "new Location";
             var desciption = "random string";
             var comment = new Comment();
-            var item = new RentItem(user, category, desciption,location);
+            var item = new RentItem(user, category, desciption, location);
 
 
             //Act

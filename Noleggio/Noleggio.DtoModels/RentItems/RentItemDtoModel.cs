@@ -3,11 +3,18 @@ using Noleggio.Common.Contracts;
 using Noleggio.DbModels;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.Collections.Generic;
 
 namespace Noleggio.DtoModels
 {
-    public class RentItemDtoModel: IMapFrom<RentItem>
+    public class RentItemDtoModel : IMapFrom<RentItem>
     {
+        private ICollection<ImagesDtoModel> images;
+
+        public RentItemDtoModel()
+        {
+            this.images = new HashSet<ImagesDtoModel>();
+        }
         public string OwnerId { get; set; }
 
         [Required(ErrorMessage = "{0}тое задължително")]
@@ -25,8 +32,36 @@ namespace Noleggio.DtoModels
         [MaxLength(NoleggioConstants.CommentMaxLength)]
         public string Description { get; set; }
 
-        public CategoryDtoModel Category { get; set; }
+        [Required(ErrorMessage = "{0} е задължителна")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Начална Дата")]
+        public DateTime AvailableFrom { get; set; }
 
-   
+        [Required(ErrorMessage = "{0} е задължителна")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Крайна Дата")]
+        public DateTime AvailableTo { get; set; }
+
+        [Required(ErrorMessage = "{0} е задължителна")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
+        [Display(Name = "Цена на Ден")]
+        public Decimal Price { get; set; }
+
+        public ICollection<ImagesDtoModel> Images
+        {
+            get
+            {
+                return this.images;
+            }
+            set
+            {
+                this.images = value;
+            }
+        }
+
+        public string CategoryId { get; set; }
+
+
     }
 }

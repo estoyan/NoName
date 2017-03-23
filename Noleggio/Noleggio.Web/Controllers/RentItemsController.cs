@@ -9,6 +9,8 @@ using Bytes2you.Validation;
 using Noleggio.Web.Models;
 using Noleggio.Common.Contracts;
 using Microsoft.AspNet.Identity;
+using System.IO;
+using Noleggio.DtoModels;
 
 namespace Noleggio.Web.Controllers
 {
@@ -41,10 +43,28 @@ namespace Noleggio.Web.Controllers
         public ActionResult Add(RentItemsViewModel item)
         {
             
-            item.Rentitem.OwnerId = User.Identity.GetUserId();
-            this.rentItemService.Add(item.Rentitem);
-            return View("Added");
+            item.RentItem.OwnerId = User.Identity.GetUserId();
+            var imageCollection = new List<ImagesDtoModel>();
+            for (var i=0; i<Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
 
+                if (file != null && file.ContentLength > 0)
+                {
+                    var path = Server.MapPath(string.Format("~/Images/RentItem/{0}/", item.RentItem.Name));
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                     path = Path.Combine(path, file.FileName);
+                    file.SaveAs(path);
+                    imageCollection.Add(new ImagesDtoModel() { Location = path });
+                }
+            }
+
+            this.rentItemService.Add(item.RentItem, imageCollection);
+            return View("Added");
+            
         }
 
         public ActionResult Get(Guid id)

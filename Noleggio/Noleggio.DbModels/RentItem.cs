@@ -7,17 +7,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio.DbModels
 {
-    public class RentItem: IDeletableEntity
+    public class RentItem : IDeletableEntity
     {
         const string ImagePathTooLong = "Path to image cannot be longer than  100 symbols";
 
         private ICollection<Comment> comments;
         private ICollection<Lease> leases;
+        private ICollection<Image> images;
 
         public RentItem()
         {
             this.leases = new HashSet<Lease>();
             this.comments = new HashSet<Comment>();
+            this.images = new HashSet<Image>();
         }
 
         public RentItem(string user, Guid category, string description, string location) : this()
@@ -55,10 +57,31 @@ namespace Noleggio.DbModels
         [Required]
         [MaxLength(NoleggioConstants.DescriptionMaxLength)]
         public string Description { get; set; }
-       
+
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime AvailableFrom { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime AvailableTo { get; set; }
+
         //[Required]
-        [MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
-        public virtual string ImageLocation { get; set; }
+        //[MaxLength(NoleggioConstants.ImagePathLength, ErrorMessage = ImagePathTooLong)]
+        public virtual ICollection<Image> Images
+        {
+            get
+            {
+                return this.images;
+            }
+            set
+            {
+                this.images = value;
+            }
+
+        }
 
         public virtual ICollection<Lease> Leases
         {
@@ -66,7 +89,7 @@ namespace Noleggio.DbModels
             {
                 return this.leases;
             }
-           private set
+            private set
             {
                 this.leases = value;
             }

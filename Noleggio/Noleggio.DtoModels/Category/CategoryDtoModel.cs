@@ -14,10 +14,12 @@ namespace Noleggio.DtoModels
     {
         public Guid ID { get; set; }
 
+        //public string Image { get;  set;}
+
         [Required]
         [MinLength(NoleggioConstants.CategoryNameMinLenght)]
         [MaxLength(NoleggioConstants.CategoryNameMaxLenght)]
-
+        [Display(Name = "Тип Категория")]
         public string Name { get; set; }
     }
 }

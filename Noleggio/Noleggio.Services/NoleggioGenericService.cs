@@ -41,12 +41,16 @@ namespace Noleggio.Services
 
         public void Add(TEntity entity)
         {
+
+                this.repository.Add(entity);
+            this.unitOfWork.Commit();   
+           
+        }
+        public void AddMany(TEntity entity)
+        {
+
             this.repository.Add(entity);
 
-            using (this.UnitOfWork)
-            {
-                this.UnitOfWork.Commit();
-            }
         }
 
         public void Update(TEntity entity)

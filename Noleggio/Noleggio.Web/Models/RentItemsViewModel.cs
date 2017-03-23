@@ -1,10 +1,13 @@
 ﻿using Noleggio.DtoModels;
+using System.Web;
 
 namespace Noleggio.Web.Models
 {
     public class RentItemsViewModel : BaseViewModel
     {
-        public RentItemDtoModel Rentitem { get; set; }
-        public LoginViewModel LoginView { get; set; }
+
+        public HttpPostedFileBase Image { get; set; }
+
+        public RentItemDtoModel RentItem { get; set; }
     }
 }
