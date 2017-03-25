@@ -12,8 +12,8 @@ using Bytes2you.Validation;
 
 namespace Noleggio.Data.Repositories
 {
-    public class GenericEfRepository<TEntity> : IGenericEfRepository<TEntity>
-        where TEntity : class, IDeletableEntity
+    public class GenericEfRepository<TEntity> : IGenericEfRepository<TEntity> 
+        where TEntity: class, IDeletableEntity
     {
 
         private INoleggioDbContext dbContext;
@@ -55,14 +55,16 @@ namespace Noleggio.Data.Repositories
         public void Add(TEntity entity)
         {
             Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
-            this.dbSet.Add(entity);
+
+            var entry = AttachIfDetached(entity);
+            entry.State = EntityState.Added;
         }
 
         public IQueryable<TEntity> GetAll()
         {
             return this.dbSet;
         }
-
+        
 
         public TEntity GetById(int id)
         {
@@ -87,7 +89,6 @@ namespace Noleggio.Data.Repositories
 
         public void Delete(TEntity entity)
         {
-            Guard.WhenArgument(entity, nameof(entity)).IsNull().Throw();
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.Now;
 

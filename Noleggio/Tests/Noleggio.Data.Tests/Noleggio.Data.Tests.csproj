@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\AddShould.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\ConstructorShould.cs" />
+    <Compile Include="Repositories\GenericEfRepositoryTests\Delete_Shold.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\Method.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\MockedRepository.cs" />
     <Compile Include="Repositories\GenericEfRepositoryTests\ProtectedPropertyDbContext_Should.cs" />

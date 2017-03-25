@@ -63,6 +63,14 @@
       <Project>{8169DEFC-9158-4CD6-98DD-C52A473A226A}</Project>
       <Name>Noleggio.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.DbModels\Noleggio.DbModels.csproj">
+      <Project>{69E11A1F-295E-4743-A30E-1BA7F99B9991}</Project>
+      <Name>Noleggio.DbModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.DtoModels\Noleggio.DtoModels.csproj">
+      <Project>{7B2B3D1D-1A3E-4013-9794-27AA13110CEF}</Project>
+      <Name>Noleggio.DtoModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

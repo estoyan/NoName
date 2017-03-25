@@ -1,23 +1,15 @@
-﻿using Moq;
-using Noleggio.Data.Contracts;
-using Noleggio.Data.Repositories;
-using Noleggio.DbModels;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Noleggio.Data.Tests.Repositories.GenericEfRepositoryTests
 {
-  
     [TestFixture]
-    public class Add_Should
+    public class Delete_Should
     {
-        
+
 
         [Test]
         public void CallOnce_DbSet_Add_WithSameArguments()
@@ -53,6 +45,8 @@ namespace Noleggio.Data.Tests.Repositories.GenericEfRepositoryTests
             Assert.Throws<ArgumentNullException>(() => sut.Add(null));
         }
 
-        
+
     }
+}
+
 }
