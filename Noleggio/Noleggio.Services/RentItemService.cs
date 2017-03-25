@@ -35,7 +35,7 @@ namespace Noleggio.Services
         public void Add(RentItemDtoModel item, IList<ImagesDtoModel> imageCollection)
         {
             var itemDb = mapper.Map<RentItem>(item);
-            base.AddMany(itemDb);
+            base.Add(itemDb);
             foreach (var image in imageCollection)
             {
                 var imageDb = mapper.Map<Image>(image);
