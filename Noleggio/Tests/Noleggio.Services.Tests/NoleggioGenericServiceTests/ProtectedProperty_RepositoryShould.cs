@@ -15,7 +15,6 @@ namespace Noleggio.Services.Tests.NoleggioGenericServiceTests
             var mockeRepository = new Mock<IGenericEfRepository<Category>>();
             var mockedUnitOfWork = new Mock<IUnitOfWork>();
             var genericService = new NoleggioGenericServiceMock(mockeRepository.Object, mockedUnitOfWork.Object);
-            mockeRepository.Setup(x => x.GetAll(y => y.IsDeleted)).Verifiable();
 
             //Act
             var actualRepository = genericService.RepositoryMock;
