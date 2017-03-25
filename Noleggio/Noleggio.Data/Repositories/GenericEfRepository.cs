@@ -62,43 +62,9 @@ namespace Noleggio.Data.Repositories
 
         public IQueryable<TEntity> GetAll()
         {
-            return this.GetAll(null);
+            return this.dbSet;
         }
-
-        public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filterExpression)
-        {
-            return this.GetAll<TEntity>(filterExpression, null);
-        }
-
-        public IQueryable<TEntity> GetAll<T1>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, T1>> sortExpression)
-        {
-            return this.GetAll<T1, TEntity>(filterExpression, sortExpression, null);
-
-        }
-
-        public IQueryable<T2> GetAll<T1, T2>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, T1>> sortExpression, Expression<Func<TEntity, T2>> selectExpression)
-        {
-            IQueryable<TEntity> result = this.DbSet;
-
-            if (filterExpression != null)
-            {
-                result = result.Where(filterExpression);
-            }
-
-            if (sortExpression != null)
-            {
-                result = result.OrderBy(sortExpression);
-            }
-
-            if (selectExpression != null)
-            {
-                return result.Select(selectExpression);
-            }
-            else
-            {
-                return result.OfType<T2>();
-            }
-        }
+        
 
         public TEntity GetById(int id)
         {

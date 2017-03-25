@@ -41,24 +41,24 @@ namespace Noleggio.Services
 
         public void Add(TEntity entity)
         {
-
+            using (this.unitOfWork)
+            {
                 this.repository.Add(entity);
-            this.unitOfWork.Commit();   
-           
-        }
-        public void AddMany(TEntity entity)
-        {
-
-            this.repository.Add(entity);
+                this.unitOfWork.Commit();
+            }
 
         }
+        //public void AddMany(TEntity entity)
+        //{
+
+        //    this.repository.Add(entity);
+        //}
 
         public void Update(TEntity entity)
         {
-            this.repository.Update(entity);
-
             using (this.UnitOfWork)
             {
+                this.repository.Update(entity);
                 this.UnitOfWork.Commit();
             }
         }
@@ -66,10 +66,9 @@ namespace Noleggio.Services
 
         public void Delete(TEntity entity)
         {
-            this.repository.Delete(entity);
-
             using (this.UnitOfWork)
             {
+                this.repository.Delete(entity);
                 this.UnitOfWork.Commit();
             }
         }
@@ -98,54 +97,9 @@ namespace Noleggio.Services
 
         public IQueryable<TEntity> GetDeleted()
         {
-            var reslut = this.repository.GetAll(x => x.IsDeleted);
+            var reslut = this.repository.GetAll().Where(x => x.IsDeleted == true);
             return reslut;
-                //base.repository.GetAll(x => x.IsDeleted);
         }
 
-        //    public IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
-        //    {
-        //        if (filter == null)
-        //        {
-        //            throw new ArgumentNullException("Filter can't be null");
-        //        }
-
-        //        return this.repository.GetAll(filter);
-        //    }
-
-        //    public IQueryable<TEntity> GetAll<T1>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, T1>> orderBy)
-        //    {
-        //        if (filter == null)
-        //        {
-        //            throw new ArgumentNullException("Filter can't be null");
-        //        }
-
-        //        if (orderBy == null)
-        //        {
-        //            throw new ArgumentNullException("OrderBy can't be null");
-        //        }
-
-        //        return this.repository.GetAll(filter, orderBy);
-        //    }
-
-        //    public IQueryable<TResult> GetAll<T1, TResult>(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, T1>> orderBy, Expression<Func<TEntity, TResult>> select)
-        //    {
-        //        if (filter == null)
-        //        {
-        //            throw new ArgumentNullException("Filter can't be null");
-        //        }
-
-        //        if (orderBy == null)
-        //        {
-        //            throw new ArgumentNullException("OrderBy can't be null");
-        //        }
-
-        //        if (select == null)
-        //        {
-        //            throw new ArgumentNullException("Select can't be null");
-        //        }
-
-        //        return this.repository.GetAll(filter, orderBy, select);
-        //    }
     }
 }

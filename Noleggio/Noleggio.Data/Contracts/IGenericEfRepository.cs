@@ -15,12 +15,6 @@ namespace Noleggio.Data.Contracts
 
         IQueryable<TEntity> GetAll();
 
-        IQueryable<TEntity> GetAll(Expression<Func<TEntity, bool>> filterExpression);
-
-        IQueryable<TEntity> GetAll<T1>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, T1>> sortExpression);
-
-        IQueryable<T2> GetAll<T1, T2>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, T1>> sortExpression, Expression<Func<TEntity, T2>> selectExpression);
-
         void Add(TEntity entity);
 
         void Update(TEntity entity);
