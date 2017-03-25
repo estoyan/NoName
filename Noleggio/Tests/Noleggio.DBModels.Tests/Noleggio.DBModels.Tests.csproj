@@ -80,6 +80,12 @@
     <Compile Include="CommentsTests\ConstructorShould_Throw.cs" />
     <Compile Include="CommentsTests\Constructor_Should.cs" />
     <Compile Include="CommentsTests\PropertiesShould.cs" />
+    <Compile Include="CommentsTests\UserProperty_Should.cs" />
+    <Compile Include="CommentsTests\RentItemProperty_Should.cs" />
+    <Compile Include="ImageTests\Constructor_Should.cs" />
+    <Compile Include="ImageTests\IsDeleted_Should.cs" />
+    <Compile Include="ImageTests\DeletedOn_Should.cs" />
+    <Compile Include="ImageTests\RentItemProperty_Shold.cs" />
     <Compile Include="LeaseTests\Constructor_Should.cs" />
     <Compile Include="LeaseTests\Constructor_Should_Throw.cs" />
     <Compile Include="LeaseTests\Properties_Should.cs" />

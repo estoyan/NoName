@@ -22,8 +22,6 @@ namespace Noleggio.Data.Migrations
            
                     RoleManager.Create(new IdentityRole("admin"));
                 
-            // user
-
             var UserManager = new UserManager<User>(new UserStore<User>(context));
             var PasswordHash = new PasswordHasher();
             if (!context.Users.Any(u => u.UserName == "admin@admin.net"))

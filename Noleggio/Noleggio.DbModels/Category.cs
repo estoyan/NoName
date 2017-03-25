@@ -14,7 +14,7 @@ namespace Noleggio.DbModels
 
         public Category()
         {
-            this.items = new HashSet<RentItem>();
+            this.Items = new HashSet<RentItem>();
         }
         public Category(string name) : this()
         {
@@ -39,7 +39,7 @@ namespace Noleggio.DbModels
             {
                 return this.items;
             }
-           private  set
+           private set
             {
                 this.items = value;
             }

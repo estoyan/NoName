@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bytes2you.Validation;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,6 +13,7 @@ namespace Noleggio.DbModels
         }
         public Image( string location)
         {
+            Guard.WhenArgument(location, nameof(location)).IsNullOrEmpty().Throw();
             this.Location = location;
         }
 
