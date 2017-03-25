@@ -13,21 +13,20 @@ namespace Noleggio.Services.Tests.NoleggioGenericServiceTests
     [TestFixture]
     public class GetDeletedShould
     {
-        //TODO check this test
-        //[Test]
-        //public void GetDeletedShouldCallRepositoryGetAllOnce()
-        //{
-        //    //Arrange
-        //    var mockeRepository = new Mock<IGenericEfRepository<Category>>();
-        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
-        //    var genericService = new NoleggioGenericServiceMock(mockeRepository.Object, mockedUnitOfWork.Object);
-        //    mockeRepository.Setup(x => x.GetAll(y => y.IsDeleted)).Verifiable();
+        [Test]
+        public void GetDeletedShouldCallRepositoryGetAllOnce()
+        {
+            //Arrange
+            var mockeRepository = new Mock<IGenericEfRepository<Category>>();
+            var mockedUnitOfWork = new Mock<IUnitOfWork>();
+            var genericService = new NoleggioGenericServiceMock(mockeRepository.Object, mockedUnitOfWork.Object);
+            mockeRepository.Setup(x => x.GetAll()).Returns(new List<Category>().AsQueryable()).Verifiable();
 
-        //    //Act
-        //    genericService.GetDeleted();
+            //Act
+            genericService.GetDeleted();
 
-        //    //Assert
-        //    mockeRepository.Verify(x => x.GetAll(y => y.IsDeleted), Times.Once);
-        //}
+            //Assert
+            mockeRepository.Verify(x => x.GetAll(), Times.Once);
+        }
     }
 }

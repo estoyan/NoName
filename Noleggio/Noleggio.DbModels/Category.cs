@@ -22,7 +22,7 @@ namespace Noleggio.DbModels
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; private set; }
+        public Guid ID { get;  set; }
 
         [Required]
         [MinLength(NoleggioConstants.CategoryNameMinLenght)]

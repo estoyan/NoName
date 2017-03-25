@@ -34,20 +34,25 @@ namespace Noleggio.Services
 
         public void Add(RentItemDtoModel item, IList<ImagesDtoModel> imageCollection)
         {
-            var itemDb = mapper.Map<RentItem>(item);
-            base.Add(itemDb);
-            foreach (var image in imageCollection)
+            using (base.UnitOfWork)
             {
-                var imageDb = mapper.Map<Image>(image);
-                imageDb.RentItem = itemDb;
-                itemDb.Images.Add(imageDb);
+                var itemDb = mapper.Map<RentItem>(item);
+                base.Repository.Add(itemDb);
+                foreach (var image in imageCollection)
+                {
+                    var imageDb = mapper.Map<Image>(image);
+                    imageDb.RentItem = itemDb;
+                    itemDb.Images.Add(imageDb);
+                }
+                base.UnitOfWork.Commit();
             }
-            base.UnitOfWork.Commit();
         }
 
 
         public RentItemDetaildDtoModel GetRentItemById(Guid rentItem)
         {
+            Guard.WhenArgument(rentItem, nameof(rentItem)).IsEmptyGuid().Throw();
+
             return mapper.Map<RentItemDetaildDtoModel>(base.GetById(rentItem));
         }
 
@@ -69,7 +74,7 @@ namespace Noleggio.Services
 
         public List<RentItemDtoModel> GetRentItems(DateTime beginDate, DateTime endDate, Guid category, string filter, int page = 0)
         {
-            return base.GetAll().Where(x =>x.IsDeleted==false
+            return base.GetAll().Where(x => x.IsDeleted == false
              && x.CategoryId == category
              && x.AvailableFrom >= beginDate
              && x.AvailableTo <= endDate
@@ -86,7 +91,7 @@ namespace Noleggio.Services
         public List<RentItemDtoModel> Recent(int amoutToTake)
         {
             return base.GetAll()
-                .Where(x=>x.IsDeleted==false)
+                .Where(x => x.IsDeleted == false)
                 .OrderBy(x => x.CreatedOn)
                 .Take(amoutToTake)
                 .ToList()

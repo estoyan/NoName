@@ -11,6 +11,17 @@ namespace Noleggio.DBModels.Tests.ImageTests
     [TestFixture]
     public class Constructor_Should
     {
+
+        [Test]
+        public void ReturnNewInstance()
+        {
+            //Arrange & Act
+            var sut = new Image();
+            
+            //Assert
+            Assert.IsNotNull(sut);
+
+        }
         [Test]
         public void SetLocation()
         {

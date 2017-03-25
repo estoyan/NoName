@@ -32,7 +32,8 @@ namespace Noleggio.Services
         public  IList<CommentDtoModel> GetAll(Guid rentItemId)
         {
             var comments = base.GetAll().Where(x => x.IsDeleted == false && x.ItemId == rentItemId).ToList();
-            return comments.Select(x => mapper.Map<CommentDtoModel>(x)).ToList();
+            return mapper.Map<List<CommentDtoModel>>(comments);
+            //return comments.Select(x => mapper.Map<CommentDtoModel>(x)).ToList();
 
         }
     }
