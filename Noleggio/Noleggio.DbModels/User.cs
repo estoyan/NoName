@@ -35,10 +35,9 @@ namespace Noleggio.DbModels
             this.IsDeleted = false;
         }
 
-        public User(/*Guid aspNetUserId,*/ string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
+        public User(string email, string firstName, string lastName, DateTime dateOfBirth, string city, string address)
             : this()
         {
-            //Guard.WhenArgument(aspNetUserId, nameof(aspNetUserId)).IsEmptyGuid().Throw();
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
 
             this.FirstName = firstName;

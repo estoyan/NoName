@@ -9,6 +9,7 @@ namespace Noleggio.Web.NinjectModules
         public override void Load()
         {
             Kernel.Bind<IMapingService>().To<MappingService>();
+            //Kernel.Bind<IMapperConfigurationExpression>().To<AutoMapperModule>();
         }
     }
 }

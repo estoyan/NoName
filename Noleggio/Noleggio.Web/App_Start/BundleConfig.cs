@@ -8,11 +8,14 @@ namespace Noleggio.Web
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            bundles.Add(new ScriptBundle("~/bundles/headers").Include(
+                        "~/Scripts/header.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-            //"~/Scripts/jquery-ui-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
+            "~/Scripts/jquery.unobtrusive*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
             "~/Scripts/jquery-ui-{version}.js",
@@ -33,6 +36,9 @@ namespace Noleggio.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/commentCss").Include(
+                      "~/Content/comments.css"));
 
             //     bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
             //"~/Content/themes/base/jquery.ui.accordion.css",

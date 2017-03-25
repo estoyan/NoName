@@ -30,11 +30,11 @@ namespace Noleggio.DbModels
 
         [Required]
         public Guid UserId { get; set; }
-        public virtual User User { get; private set; }
+        public virtual User User { get;  set; }
 
         [Required]
         public Guid ItemId { get; set; }
-        public virtual RentItem Item { get; private set; }
+        public virtual RentItem Item { get;  set; }
 
         [Required]
         [MaxLength(NoleggioConstants.CommentDescriptionMaxLength)]

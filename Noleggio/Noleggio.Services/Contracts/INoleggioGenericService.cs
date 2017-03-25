@@ -21,16 +21,16 @@ namespace Noleggio.Services.Contracts
 
         IQueryable<T> GetAll();
 
-        IQueryable<T> GetAll(Expression<Func<T, bool>> filter);
+        //IQueryable<T> GetAll(Expression<Func<T, bool>> filter);
 
-        IQueryable<T> GetAll<T1>(
-           Expression<Func<T, bool>> filter,
-           Expression<Func<T, T1>> orderBy);
+        //IQueryable<T> GetAll<T1>(
+        //   Expression<Func<T, bool>> filter,
+        //   Expression<Func<T, T1>> orderBy);
 
-        IQueryable<TResult> GetAll<T1, TResult>(
-           Expression<Func<T, bool>> filter,
-           Expression<Func<T, T1>> orderBy,
-           Expression<Func<T, TResult>> select);
+        //IQueryable<TResult> GetAll<T1, TResult>(
+        //   Expression<Func<T, bool>> filter,
+        //   Expression<Func<T, T1>> orderBy,
+        //   Expression<Func<T, TResult>> select);
 
         IQueryable<T> GetDeleted();
     }

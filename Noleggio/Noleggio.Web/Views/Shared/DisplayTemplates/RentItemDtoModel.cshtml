@@ -1,0 +1,23 @@
+﻿@using Noleggio.DtoModels.RentItems
+
+@model  RentItemDtoModel
+
+@*<div> @item.Name</div>
+<div> @item.Price</div>
+<div> @item.Location</div>*@
+
+
+<div>
+    <div>
+        @Html.ActionLink(Model.Name,"Get", new { id = Model.ItemId })
+    </div>
+    <div>
+        Цена @Html.DisplayFor(m => m.Price)
+    </div>
+    <div>
+        @Html.DisplayFor(m => m.Location)
+    </div>
+    <div>
+        @Html.DisplayFor(m => m.Description)
+    </div>
+</div>

@@ -20,6 +20,7 @@ namespace Noleggio.DbModels
             this.leases = new HashSet<Lease>();
             this.comments = new HashSet<Comment>();
             this.images = new HashSet<Image>();
+            this.CreatedOn = DateTime.UtcNow;
         }
 
         public RentItem(string user, Guid category, string description, string location) : this()
@@ -108,6 +109,9 @@ namespace Noleggio.DbModels
         }
 
         public bool IsDeleted { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime CreatedOn { get; private set; }
 
         [DataType(DataType.Date)]
         public DateTime? DeletedOn { get; set; }

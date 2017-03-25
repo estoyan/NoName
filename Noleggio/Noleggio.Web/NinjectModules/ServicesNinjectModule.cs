@@ -26,6 +26,9 @@ namespace Noleggio.Web.NinjectModules
             //Kernel.Bind<IUserService>().To<UserService>();
             Kernel.Bind<ICategoryService>().To<CategoryService>();
             Kernel.Bind<IRentItemService>().To<RentItemService>();
+            Kernel.Bind<IImageService>().To<ImageService>();
+            Kernel.Bind<ICommentService>().To<CommentService>();
+            Kernel.Bind<IUserService>().To<UserService>();
         }
     }
 }

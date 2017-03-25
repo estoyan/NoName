@@ -24,7 +24,7 @@ namespace Noleggio.Services
         }
         public IEnumerable<CategoryDtoModel> GetAllCategories()
         {
-            var categories = base.GetAll(x => !x.IsDeleted).ToList();
+            var categories = base.GetAll().Where(x => !x.IsDeleted).ToList();
             return categories.Select(x => mapper.Map<CategoryDtoModel>(x));
         }
     }

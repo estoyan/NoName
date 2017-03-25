@@ -1,0 +1,39 @@
+﻿@using Noleggio.DtoModels.RentItems
+@model  IEnumerable<RentItemDtoModel>
+
+<div id="rentItemPanel">
+    @foreach (var item in Model)
+    {
+        <div class="panel">
+             @Html.DisplayFor(c => item)
+        </div>
+    }
+</div>
+<ul class="pagination">
+    <li>
+        @Ajax.ActionLink("<<", "Search", "RentItems", new { id = 1 }, new AjaxOptions()
+   {
+       HttpMethod = "Post",
+       UpdateTargetId = "rentItemPanel",
+       InsertionMode = InsertionMode.Replace,
+   })
+    </li>
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <li>@Ajax.ActionLink(@i.ToString(),"Search", "RentItems", new {id=@i }, new AjaxOptions()
+       {
+           HttpMethod = "Post",
+           UpdateTargetId = "rentItemPanel",
+           InsertionMode = InsertionMode.Replace,
+       })</li>
+    }
+    <li>
+        @Ajax.ActionLink(">>", "Search", "RentItems", new { id = @ViewBag.TotalPages }, new AjaxOptions()
+   {
+       HttpMethod = "Post",
+       UpdateTargetId = "rentItemPanel",
+       InsertionMode = InsertionMode.Replace,
+   })
+</li>
+
+</ul>

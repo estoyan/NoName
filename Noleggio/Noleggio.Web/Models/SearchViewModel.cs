@@ -6,13 +6,13 @@ using System.Web;
 
 namespace Noleggio.Web.Models
 {
-    public class SearchViewModel
+    public class SearchViewModel:BaseViewModel
     {
         [Display(Name = "Критерии")]
         public string Filter { get; set; }
 
         [Display(Name = "Град")]
-        public string Location { get; set; }
+        public Guid CategoryId { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]

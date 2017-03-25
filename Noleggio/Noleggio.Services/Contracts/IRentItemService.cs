@@ -11,5 +11,13 @@ namespace Noleggio.Services.Contracts
         void Add(RentItemDtoModel item);
         void Add(RentItemDtoModel item, IList<ImagesDtoModel> imageCollection);
         RentItemDetaildDtoModel GetRentItemById(Guid rentItem);
+        int TotalPages();
+        List<RentItemDtoModel> GetRentItems(DateTime beginDate, DateTime endDate, Guid category, string filter, int page = 0);
+        List<RentItemDtoModel> Recent(int amoutToTake);
+        IList<RentItemDetaildDtoModel> GetByItemName(string name, int page);
+        IList<RentItemDetaildDtoModel> All(bool isDelted, string filter, int page);
+        IList<RentItemDetaildDtoModel> All(bool isDelted, int page);
+
+
     }
 }

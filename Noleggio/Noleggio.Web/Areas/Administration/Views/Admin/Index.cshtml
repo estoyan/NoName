@@ -1,0 +1,49 @@
+﻿@using Noleggio.Web.Areas.Administration.Models
+
+@model AdminHomeViewModel
+
+<h2>IndexView</h2>
+
+@using (Html.BeginForm("SearchUser", "Admin", FormMethod.Post, new { @class = "row" }))
+{
+    <div class="col-md-10">
+
+        <div class="form-group">
+
+            @Html.TextBoxFor(m => m.UserFilter, new { @class = "form-control", placeholder = "Търси Потребител" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Изтрита ли е обявата", new { @class = "col-md-2 control-label" })
+            <div class="col-md-6">
+                @Html.JQueryUI().SelectmenuFor(m => m.IsUserDeleted, new SelectList(new bool[] { true, false }))
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-default btn-primary">Search</button>
+    </div>
+}
+
+
+
+@using (Html.BeginForm("SearchRentItem", "Admin", FormMethod.Post, new { @class = "row" }))
+{
+    <div class="col-md-10">
+
+        <div class="form-group">
+
+            @Html.TextBoxFor(m => m.RentItemFilter, new { @class = "form-control",placeholder = "Търси Обява" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Изтрита ли е обявата", new { @class = "col-md-2 control-label" })
+            <div class="col-md-6">
+                @Html.JQueryUI().SelectmenuFor(m => m.IsItemDeleted, new SelectList(new bool[] { true, false }))
+            </div>
+        </div>
+
+    </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-default btn-primary">Search</button>
+        </div>
+}

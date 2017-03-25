@@ -1,40 +1,64 @@
 ﻿@*@{
         ViewBag.Title = "RentItem";
     }*@
-@using Noleggio.DtoModels.RentItems
-@model RentItemDetaildDtoModel
+    @using Noleggio.DtoModels.RentItems
+    @model  RentItemsViewModelDetailed
 
 @Styles.Render("~/bundles/jqueryUi_css")
+<style>
+    .tales {
+  width: 100%;
+}
+.carousel-inner{
+  width:100%;
+  max-height: 200px !important;
+}
+.myCarouselImage{
+    height:200px;
+    width:200px;
+}
 
+</style>
 
 <div class="row">
-    <div class="col-md-4">
-        @*kartinka*@
-        <img src="@Model.Images" alt="Alternate Text"  width="100" height="100"/>
+    <div class="col-md-8">
+        <div class="row">
+            @Html.Partial("_ImagesPartial")
+        </div>
+        <div class="row">
+            <h3>@Model.RentItem.Name</h3>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RentItem.Category.Name)<span>: @Model.RentItem.Category.Name</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RentItem.Description)<span>: @Model.RentItem.Description</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RentItem.Location)<span>: @Model.RentItem.Location</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.RentItem.Owner)<span>: @Model.RentItem.Owner</span>
+        </div>
+     
     </div>
-    <div class="col-md-6">
+
+    <div class="col-md-4">
         <div class="row-fluid">
-            <div class="col-md-8">
-                <h5>@Model.Price лв.</h5>
+            <div>
+                <span>@Html.LabelFor(m => m.RentItem.Price): </span><span>@Model.RentItem.Price лв.</span>
             </div>
         </div>
         <div class="row-fluid">
-            @Html.JQueryUI().DatepickerFor(m => m.AvailableFrom, DateTime.Today.AddDays(7)).Inline(true)
+            @Html.JQueryUI().DatepickerFor(m => m.RentItem.AvailableFrom).Inline(true)
         </div>
         <div class="row-fluid">
-            @Html.JQueryUI().DatepickerFor(m => m.AvailableTo, DateTime.Today.AddDays(7)).Inline(true)
+            @Html.JQueryUI().DatepickerFor(m => m.RentItem.AvailableTo).Inline(true)
         </div>
     </div>
 </div>
-<h3>@Model.Name</h3>
+<div class="row">
+    @Html.Partial("_CommentsPartial",@Model.RentItem.Comments, new ViewDataDictionary() { { "ItemId", Model.RentItem.ItemId}, { "OwnerId", Model.RentItem.OwnerId} }  )
+</div>
 
-<div>@Model.Category.Name</div>
-<div>@Model.Description</div>
-<div>@Model.Location</div>
-<div>@Model.Owner.FirstName</div>
-@foreach (var comment in @Model.Comments)
-{
-    <div>@comment.Description</div>
-
-}
 

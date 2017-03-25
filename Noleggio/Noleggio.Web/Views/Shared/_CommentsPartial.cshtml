@@ -1,0 +1,92 @@
+﻿@using Noleggio.DtoModels.CommentsDto
+@using Microsoft.AspNet.Identity;
+
+@model IEnumerable<CommentDtoModel>
+
+@Styles.Render("~/Content/commentCss")
+
+<div class="container">
+    <div class="row">
+        <div class="col-ss=" comment-tabs">
+            <div class="comment-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#comments-logout" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Коментари</h4></a></li>
+                    <li><a href="#add-comment" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Добави Кометар</h4></a></li>
+                </ul>
+                <div class="tab-content" id="commentPanel">
+                    <div class="tab-pane active" id="comments-logout">
+                        <ul class="media-list">
+                            @if (Model.Count() == 0)
+                            {
+                                <li class="media">
+                                    <div class="media-body">
+                                Няма коментари по тази обява    
+                                    </div>
+
+                                </li>
+                            }
+                            @foreach (var comment in Model)
+                            {
+                                <li class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="well well-lg">
+                                            <h4 class="media-heading text-uppercase reviews">@comment.Owner </h4>
+                                            <ul class="media-date text-uppercase reviews list-inline">
+                                                <li class="dd">@comment.Date.Day</li>
+                                                <li class="mm">@comment.Date.Month</li>
+                                                <li class="aaaa">@comment.Date.Year</li>
+                                            </ul>
+                                            <p class="media-comment">
+                                                @comment.Description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="add-comment">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <div>
+                                <strong>Здравей те!</strong> Ако имате акоунт трябва да @Html.ActionLink("влезете", "Login", "Account") за да коментирате. Ако не може да се @Html.ActionLink("регистрирате", "Register", "Account")
+                            </div>
+                        }
+
+                        @using (Ajax.BeginForm("AddComment", "Comment", new { }, new AjaxOptions()
+                        {
+                            HttpMethod = "Post",
+                            UpdateTargetId = "commentPanel",
+                            InsertionMode = InsertionMode.Replace,
+                        }, new { id = "ajaxForm", @class = "form-horizontal", role = "form" }))
+                        {
+                            var unAuthClass = "";
+                            var isReadOnly = true;
+                            if (!User.Identity.IsAuthenticated || (User.Identity.GetUserId() == (string)ViewData["OwnerId"]))
+                            {
+                                unAuthClass = "disabled";
+                                isReadOnly = false;
+                            }
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Comment</label>
+                                <div class="col-sm-10">
+                                    @*TODO Validate Input*@
+                                    <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                                    <input type="hidden" name="itemId" value="@ViewData["ItemId"]" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button class="btn btn-success btn-circle text-uppercase @unAuthClass" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Noleggio.DtoModels;
+using Noleggio.DtoModels.RentItems;
 using Noleggio.Web.App_Start;
 using System.Reflection;
 using System.Web.Mvc;

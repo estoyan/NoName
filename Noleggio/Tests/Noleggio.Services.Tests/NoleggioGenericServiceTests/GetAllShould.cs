@@ -29,18 +29,18 @@ namespace Noleggio.Services.Tests.NoleggioGenericServiceTests
             mockeRepository.Verify(x => x.GetAll(), Times.Once);
         }
 
-        [Test]
-        public void GetAllShouldThrowIfFilterIsull()
-        {
-            //Arrange
-            var mockeRepository = new Mock<IGenericEfRepository<Category>>();
-            var mockedUnitOfWork = new Mock<IUnitOfWork>();
-            var genericService = new NoleggioGenericServiceMock(mockeRepository.Object, mockedUnitOfWork.Object);
+        //[Test]
+        //public void GetAllShouldThrowIfFilterIsull()
+        //{
+        //    //Arrange
+        //    var mockeRepository = new Mock<IGenericEfRepository<Category>>();
+        //    var mockedUnitOfWork = new Mock<IUnitOfWork>();
+        //    var genericService = new NoleggioGenericServiceMock(mockeRepository.Object, mockedUnitOfWork.Object);
 
-            //Act & Assert
-            Assert.Throws<ArgumentNullException>(() => genericService.GetAll(null));
+        //    //Act & Assert
+        //    Assert.Throws<ArgumentNullException>(() => genericService.GetAll(null));
 
-        }
+        //}
 
 
         //[Test]

@@ -5,19 +5,27 @@ using System.Web;
 using System.Web.Mvc;
 using Noleggio.DbModels;
 using Noleggio.Services.Contracts;
+using Noleggio.Web.Models;
+using Bytes2you.Validation;
 
 namespace Noleggio.Web.Controllers
 {
     public class HomeController : BaseController
-    { 
-        public HomeController( ICategoryService categoryService) :
+    {
+        private IRentItemService rentItemService;
+
+        public HomeController( ICategoryService categoryService, IRentItemService rentItemService) :
             base( categoryService)
         {
+            Guard.WhenArgument(rentItemService, nameof(rentItemService)).IsNull().Throw();
+            this.rentItemService = rentItemService;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var recentItems=this.rentItemService.Recent(10);
+            
+            return View(new HomeViewModel() { RecentItems=recentItems});  
         }
 
         public ActionResult About()
@@ -33,9 +41,6 @@ namespace Noleggio.Web.Controllers
 
             return View();
         }
-        public ActionResult Search()
-        {
-            return View();
-        }
+      
     }
 }

@@ -5,35 +5,63 @@
 
 @Styles.Render("~/bundles/jqueryUi_css")
 
-@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">*@
+<div class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1">
+                <div class="form-section">
+                    <div class="row">
+                        @*@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-horizontal col-md-10", role = "form" }))*@
 
-@using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "form-horizontal col-md-10", role = "form" }))
-{
-    <div class="form-group">
-    
-        @Html.TextBoxFor(m => m.Search.Filter, new { @class = "form-control", placeholder = Html.DisplayNameFor(n => n.Search.Filter) })
-        @Html.TextBoxFor(m => m.Search.Location, new { @class = "form-control", placeholder=Html.DisplayNameFor(n=>n.Search.Location) })
 
-        <div class="input-group input-daterange" @*data-provide="datepicker"*@ @*data-date-format="yyyy-mm-dd"*@>
-            @Html.JQueryUI().DatepickerFor(m => m.Search.StartDate).ChangeMonth(true).ChangeYear(true)
-            @*@Html.EditorFor(m => m.Search.StartDate, new { @class = "form-control" })*@
-            <span class="input-group-addon">до</span>
-            @Html.JQueryUI().DatepickerFor(m => m.Search.EndDate)
+                        @using (Ajax.BeginForm("Search", "RentItems", new { }, new AjaxOptions()
+                        {
+                            HttpMethod = "Post",
+                            UpdateTargetId = "rentItemPanel",
+                            InsertionMode = InsertionMode.Replace,
+                        }, new { id = "ajaxForm", @class = "form-horizontal", role = "form" }))
+                        {
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="sr-only" for="location">Location</label>
+                                    @Html.TextBoxFor(m => m.Search.Filter, new { @class = "form-control", placeholder = Html.DisplayNameFor(n => n.Search.Filter) })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="sr-only" for="checkin">Check in</label>
+                                    <div class="input-group">
+                                        @Html.JQueryUI().DatepickerFor(m => m.Search.StartDate, new { type = "text", @class="form-control" }).ChangeMonth(true)
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="sr-only" for="checkout">Check out</label>
+                                    <div class="input-group">
+                                        @Html.JQueryUI().DatepickerFor(m => m.Search.EndDate, new { type = "text", @class = "form-control" }).ChangeMonth(true)
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="sr-only" for="guest">Guest</label>
+                                    @Html.JQueryUI().SelectmenuFor(m => m.Search.CategoryId, new SelectList(ViewBag.MainCategories, "ID", "Name"), new { @class = "form-control col-md-2 !important" })
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-default btn-primary">Search</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">Намери кола</button>
+</div>
 
-}
-
-@*@Scripts.Render("~/bundles/jquery")*@
-@*@Scripts.Render("~/bundles/jqueryval")*@
-
-
-@*<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-
-<script>
-$('.datepicker').pickadate({
-    selectMonths: true, // Enable Month Selection
-    selectYears: 10 // Creates a dropdown of 10 years to control year
-  });
-</script>*@
+<div class="tab-content" id="rentItemPanel">
+  @Html.Partial("_RecentItemsPartial", @Model.RecentItems)
+    </div>

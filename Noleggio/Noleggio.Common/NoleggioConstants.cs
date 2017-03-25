@@ -31,6 +31,7 @@ namespace Noleggio.Common
         public const int RentItemNameMaximumLength = 30;
         public const int RentItemLocationMaximumLength = 30;
 
+        public const int PagingSize = 1;
 
 
     }

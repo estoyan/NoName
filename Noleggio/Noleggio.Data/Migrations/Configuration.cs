@@ -1,5 +1,8 @@
 namespace Noleggio.Data.Migrations
 {
+    using DbModels;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,18 +18,24 @@ namespace Noleggio.Data.Migrations
 
         protected override void Seed(NoleggioDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+           
+                    RoleManager.Create(new IdentityRole("admin"));
+                
+            // user
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            var UserManager = new UserManager<User>(new UserStore<User>(context));
+            var PasswordHash = new PasswordHasher();
+            if (!context.Users.Any(u => u.UserName == "admin@admin.net"))
+            {
+                var user = new User("admin@noleggio.com","Admin", "Admin", DateTime.Now,"Gotham", "Mars")
+                {
+                   PasswordHash = PasswordHash.HashPassword("1q2w3e4r%T")
+                };
+
+                UserManager.Create(user);
+                UserManager.AddToRole(user.Id, "admin");
+            }
         }
     }
 }

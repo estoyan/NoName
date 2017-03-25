@@ -4,18 +4,21 @@ using Noleggio.DbModels;
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
+using AutoMapper;
 
-namespace Noleggio.DtoModels
+namespace Noleggio.DtoModels.RentItems
 {
-    public class RentItemDtoModel : IMapFrom<RentItem>
+    public class RentItemDtoModel : IMapFrom<RentItem>, IHaveCustomMappings
     {
-        private ICollection<ImagesDtoModel> images;
+        private IList<ImagesDtoModel> images;
 
         public RentItemDtoModel()
         {
-            this.images = new HashSet<ImagesDtoModel>();
+            this.images = new List<ImagesDtoModel>();
         }
         public string OwnerId { get; set; }
+
+        public string ItemId { get; set; }
 
         [Required(ErrorMessage = "{0}тое задължително")]
         [Display(Name = "Име")]
@@ -48,7 +51,7 @@ namespace Noleggio.DtoModels
         [Display(Name = "Цена на Ден")]
         public Decimal Price { get; set; }
 
-        public ICollection<ImagesDtoModel> Images
+        public IList<ImagesDtoModel> Images
         {
             get
             {
@@ -62,6 +65,13 @@ namespace Noleggio.DtoModels
 
         public string CategoryId { get; set; }
 
+        public virtual void CreateMappings(IMapperConfigurationExpression config)
+        {
 
+            config.CreateMap<RentItem,RentItemDtoModel >()
+                             .ForMember(s => s.ItemId, opt => opt.MapFrom(d => d.Id));
+
+
+        }
     }
 }

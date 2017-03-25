@@ -1,4 +1,5 @@
 ﻿using Noleggio.DtoModels;
+using Noleggio.DtoModels.RentItems;
 using System.Web;
 
 namespace Noleggio.Web.Models
@@ -8,6 +9,6 @@ namespace Noleggio.Web.Models
 
         public HttpPostedFileBase Image { get; set; }
 
-        public RentItemDtoModel RentItem { get; set; }
+        public RentItemDetaildDtoModel RentItem { get; set; }
     }
 }

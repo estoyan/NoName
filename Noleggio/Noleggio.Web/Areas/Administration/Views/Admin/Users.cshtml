@@ -1,0 +1,30 @@
+﻿@model List<UserDtoModel>
+
+<div style="height:100px">
+
+</div>
+<div class="container">
+    <h3>Потребители:</h3>
+    @foreach (var user in Model)
+    {
+        <div class="row">
+            @user.Name
+        </div>
+    }
+</div>
+
+<ul class="pagination">
+<li>
+    @Html.ActionLink("<<", "AllUsers",  new { id = 1 })
+</li>
+
+@for (int i = 1; i <= ViewBag.TotalPages; i++)
+{
+    <li>
+        @Html.ActionLink(@i.ToString(), "AllUsers", new { id = i })
+</li>
+}
+<li>
+    @Html.ActionLink(">>", "AllUSers", new { id = @ViewBag.TotalPages })
+</li>
+    </ul>

@@ -1,22 +1,56 @@
-﻿//using Noleggio.DbModels;
-//using Noleggio.Data.Contracts;
-//using Noleggio.Services.Contracts;
-//using System;
+﻿using Noleggio.Common;
+using Noleggio.DbModels;
+using Noleggio.Services.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Noleggio.Data.Contracts;
+using Noleggio.Common.Contracts;
+using Bytes2you.Validation;
+using Noleggio.DtoModels;
 
-//namespace Noleggio.Services
-//{
-//   public  class UserService : NoleggioGenericService<User>, IUserService
-//    {
-//        public UserService(IGenericEfRepository<User> repository, IUnitOfWork unitOfWork)
-//            : base(repository, unitOfWork)
-//        {
+namespace Noleggio.Services
+{
+    public class UserService : NoleggioGenericService<User>, IUserService
+    {
+        private IMapingService mappingService;
+        public UserService(IGenericEfRepository<User> repository, IUnitOfWork unitOfWork, IMapingService mappingService) : base(repository, unitOfWork)
+        {
+            Guard.WhenArgument(mappingService, nameof(mappingService)).IsNull().Throw();
+            this.mappingService = mappingService;
+        }
 
-//        }
+        public List<UserDtoModel> All(bool isDeleted)
+        {
+            return base.GetAll().Where(x => x.IsDeleted == isDeleted)
+                .ToList()
+                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
+                        .ToList();
+        }
 
-//        public User GetByUserName(string name)
-//        {
-//            var user = base.GetAll(x => (x.UserName == name));
-//            return user.GetEnumerator().Current;
-//        }
-//    }
-//}
+        public List<UserDtoModel> All(bool isDeleted, string filter)
+        {
+            return base.GetAll().Where(x => x.IsDeleted == isDeleted
+            && (x.UserName.Contains(filter)
+            || x.FirstName.Contains(filter)
+            || x.LastName.Contains(filter)))
+            .ToList()
+                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
+                        .ToList();
+        }
+
+
+        public List<UserDtoModel> GetByUserName(string name)
+        {
+            return base.GetAll().Select(x => x.UserName.Contains(name)
+            || x.FirstName.Contains(name)
+            || x.LastName.Contains(name)).
+            ToList()
+                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
+                        .ToList()
+                        ;
+        }
+    }
+}
