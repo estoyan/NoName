@@ -36,11 +36,11 @@ namespace Noleggio.DbModels
 
         [Required]
         public Guid ItemId { get; private set; }
-        public virtual RentItem Item { get; private set; }
+        public virtual RentItem Item { get;  set; }
 
         [Required]
         public Guid UserId { get; private set; }
-        public virtual User User { get; private set; }
+        public virtual User User { get;  set; }
 
         public bool IsDeleted { get; set; }
 

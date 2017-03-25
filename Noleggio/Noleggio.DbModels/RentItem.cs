@@ -17,9 +17,9 @@ namespace Noleggio.DbModels
 
         public RentItem()
         {
-            this.leases = new HashSet<Lease>();
-            this.comments = new HashSet<Comment>();
-            this.images = new HashSet<Image>();
+            this.Leases = new HashSet<Lease>();
+            this.Comments = new HashSet<Comment>();
+            this.Images = new HashSet<Image>();
             this.CreatedOn = DateTime.UtcNow;
         }
 
@@ -45,7 +45,7 @@ namespace Noleggio.DbModels
 
         [Required]
         public string OwnerId { get; private set; }
-        public virtual User Owner { get; private set; }
+        public virtual User Owner { get;  set; }
 
         [Required]
         [MaxLength(NoleggioConstants.RentItemLocationMaximumLength)]
@@ -53,7 +53,7 @@ namespace Noleggio.DbModels
 
         [Required]
         public Guid CategoryId { get; private set; }
-        public virtual Category Category { get; private set; }
+        public virtual Category Category { get;  set; }
 
         [Required]
         [MaxLength(NoleggioConstants.DescriptionMaxLength)]
@@ -77,7 +77,7 @@ namespace Noleggio.DbModels
             {
                 return this.images;
             }
-            set
+            private set
             {
                 this.images = value;
             }

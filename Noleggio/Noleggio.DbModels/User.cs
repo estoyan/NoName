@@ -28,10 +28,10 @@ namespace Noleggio.DbModels
 
         public User()
         {
-            this.comments = new HashSet<Comment>();
-            this.leases = new HashSet<Lease>();
-            this.items = new HashSet<RentItem>();
-            this.ratings = new HashSet<Rating>();
+            this.Comments = new HashSet<Comment>();
+            this.Leases = new HashSet<Lease>();
+            this.Items= new HashSet<RentItem>();
+            this.Ratings = new HashSet<Rating>();
             this.IsDeleted = false;
         }
 

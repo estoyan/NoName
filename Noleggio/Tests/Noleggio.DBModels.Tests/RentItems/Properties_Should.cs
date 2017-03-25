@@ -32,23 +32,6 @@ namespace Noleggio.DBModels.Tests.RentItems
             Assert.AreEqual(newDescription, item.Description);
         }
 
-        //[Test]
-        //public void SetImageLocation()
-        //{
-        //    //Arrange
-        //    var fixture = new Fixture();
-        //    var user = fixture.Create<Guid>().ToString();
-        //    var category = fixture.Create<Guid>();
-        //    var location = "new Location";
-        //    var desciption = "random string";
-        //    var item = new RentItem(user, category, desciption, location);
-
-        //    //Act
-        //    item.ImageLocation = location;
-
-        //    //Assert
-        //    Assert.AreEqual(location, item.ImageLocation);
-        //}
 
         [Test]
         public void AddLease()
