@@ -49,8 +49,14 @@
                     </li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="btn btn-default">TEst</li>
+                        <li class="btn btn-primary">@Html.ActionLink("+Добави Обява", "Add", "RentItems")</li>
                     }
+                    
+                    @if(User.IsInRole("admin"))
+                    {
+                        <li class="btn btn-primary">@Html.ActionLink("Admin", "Index", "Admin", new { Area = "Administration" }, new { })</li>
+                    }
+
                 </ul>
 
                 @Html.Partial("_LoginPartial")

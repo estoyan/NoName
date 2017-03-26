@@ -22,7 +22,7 @@ namespace Noleggio.Web
             routes.MapRoute(
                 name: "AdminDfault",
                 url: "{controller}/{action}/{page}",
-                defaults: new { controller = "Home", action = "Index", page = UrlParameter.Optional }
+                defaults: new { controller = "Admin", action = "Index", page = UrlParameter.Optional }
             );
         }
     }
