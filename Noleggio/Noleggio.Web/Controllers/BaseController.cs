@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI;
 
 namespace Noleggio.Web.Controllers
 {
@@ -28,7 +29,7 @@ namespace Noleggio.Web.Controllers
             return this.categoryService.GetAllCategories();
         }
 
-        //[OutputCache()]
+        [OutputCache(Duration = 60,Location = OutputCacheLocation.Server)]
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
             // Work with data before BeginExecute to prevent "NotSupportedException: A second operation started on this context before a previous asynchronous operation completed."

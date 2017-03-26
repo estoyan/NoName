@@ -7,6 +7,7 @@ using Noleggio.DbModels;
 using Noleggio.Services.Contracts;
 using Noleggio.Web.Models;
 using Bytes2you.Validation;
+using System.Web.UI;
 
 namespace Noleggio.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace Noleggio.Web.Controllers
             this.rentItemService = rentItemService;
         }
 
+        [OutputCache(Duration = 10, Location = OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             var recentItems=this.rentItemService.Recent(10);

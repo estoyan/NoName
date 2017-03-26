@@ -35,6 +35,7 @@ namespace Noleggio.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Add()
         {
             return View();
@@ -42,6 +43,7 @@ namespace Noleggio.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Add(RentItemsViewModel item)
         {
 

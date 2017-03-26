@@ -13,7 +13,7 @@
             @Html.TextBoxFor(m => m.UserFilter, new { @class = "form-control", placeholder = "Търси Потребител" })
         </div>
         <div class="form-group">
-            @Html.Label("Изтрита ли е обявата", new { @class = "col-md-2 control-label" })
+            @Html.Label("Изтрит ли е потребителя", new { @class = "col-md-2 control-label" })
             <div class="col-md-6">
                 @Html.JQueryUI().SelectmenuFor(m => m.IsUserDeleted, new SelectList(new bool[] { true, false }))
             </div>

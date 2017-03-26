@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Noleggio.Web.Areas.Administration.Controllers
 {
-    //[Authorize(Roles ="admin")]
+    [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
         private IUserService userService;

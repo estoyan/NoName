@@ -39,7 +39,9 @@ namespace Noleggio.DbModels
             : this()
         {
             Guard.WhenArgument(email, nameof(email)).IsNullOrEmpty().Throw();
-
+            base.Email = email;
+            base.EmailConfirmed = true;
+            base.LockoutEnabled = false;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DateOfBirth = dateOfBirth;
