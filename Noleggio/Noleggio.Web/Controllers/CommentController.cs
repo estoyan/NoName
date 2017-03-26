@@ -22,19 +22,20 @@ namespace Noleggio.Web.Controllers
             this.commentService = commentService;
         }
 
-        // GET: Comment
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //// GET: Comment
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         [AjaxOnly]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult AddComment(string addComment, Guid itemId)
         {
             var comment = new CommentDtoModel() { ItemId = itemId, Description = addComment, UserId = new Guid(User.Identity.GetUserId()) };
             this.commentService.AddCommnet(comment);
-
             return this.PartialView("_CommentsPartial", this.commentService.GetAll(itemId));
         }
     }

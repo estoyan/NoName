@@ -24,6 +24,8 @@ namespace Noleggio.DtoModels.RentItems
                 .ForMember(s => s.Owner, opt => opt.MapFrom(d => d.Owner.FirstName + " " + d.Owner.LastName));
             config.CreateMap<RentItemDetaildDtoModel, RentItem>()
                 .ForMember(s => s.Owner, opt => opt.Ignore());
+            config.CreateMap<RentItem, RentItemDetaildDtoModel>()
+                           .ForMember(s => s.ItemId, opt => opt.MapFrom(x => x.Id));
             //config.CreateMap<RentItemDetaildDtoModel, RentItem>()
             //    .ForMember(s => s.IsDeleted, opt => opt.NullSubstitute(false));
             base.CreateMappings(config);

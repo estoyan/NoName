@@ -6,6 +6,6 @@ namespace Noleggio.Services.Contracts
 {
     public interface ICategoryService :INoleggioGenericService<Category>
     {
-        IEnumerable<CategoryDtoModel> GetAllCategories();
+        List<CategoryDtoModel> GetAllCategories();
     }
 }

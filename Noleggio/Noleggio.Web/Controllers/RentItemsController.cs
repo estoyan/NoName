@@ -44,6 +44,7 @@ namespace Noleggio.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(RentItemsViewModel item)
         {
 

@@ -50,27 +50,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -85,10 +85,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseControler\BeginExecute_Should.cs" />
+    <Compile Include="BaseControler\Constructor_Should.cs" />
+    <Compile Include="BaseControler\Mocks\StubController.cs" />
+    <Compile Include="CommentControlerTests\AddComment_Should.cs" />
+    <Compile Include="CommentControlerTests\Constructor_Should.cs" />
+    <Compile Include="HomeControlerTests\About_Should.cs" />
+    <Compile Include="HomeControlerTests\Constact_Should.cs" />
+    <Compile Include="HomeControlerTests\ConstructorShould.cs" />
+    <Compile Include="HomeControlerTests\Index_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RentItemControlerTests\Add_MethodPost_Should.cs" />
+    <Compile Include="RentItemControlerTests\Constructor_Should.cs" />
+    <Compile Include="RentItemControlerTests\Get_Should.cs" />
+    <Compile Include="RentItemControlerTests\Index_Should.cs" />
+    <Compile Include="RentItemControlerTests\Add_MethodGet_Should.cs" />
+    <Compile Include="RentItemControlerTests\Mock\MockedControler.cs" />
+    <Compile Include="RentItemControlerTests\SearchShould.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Noleggio.Common\Noleggio.Common.csproj">
+      <Project>{8169defc-9158-4cd6-98dd-c52a473a226a}</Project>
+      <Name>Noleggio.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Noleggio.Data\Noleggio.Data.csproj">
       <Project>{C846D41B-3D90-4F84-AA46-4A6EF4518A20}</Project>
       <Name>Noleggio.Data</Name>
@@ -97,13 +116,30 @@
       <Project>{69E11A1F-295E-4743-A30E-1BA7F99B9991}</Project>
       <Name>Noleggio.DbModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.DtoModels\Noleggio.DtoModels.csproj">
+      <Project>{7B2B3D1D-1A3E-4013-9794-27AA13110CEF}</Project>
+      <Name>Noleggio.DtoModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.Services\Noleggio.Services.csproj">
+      <Project>{269ECA41-06F3-4C14-94BD-1491D88DB227}</Project>
+      <Name>Noleggio.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Noleggio.Web\Noleggio.Web.csproj">
+      <Project>{86745CF3-00B2-4513-B2CD-E61F904E637A}</Project>
+      <Name>Noleggio.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

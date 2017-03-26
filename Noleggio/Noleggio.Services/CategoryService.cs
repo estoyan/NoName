@@ -22,10 +22,10 @@ namespace Noleggio.Services
             Guard.WhenArgument(mapper, nameof(mapper)).IsNull().Throw();
             this.mapper = mapper;
         }
-        public IEnumerable<CategoryDtoModel> GetAllCategories()
+        public List<CategoryDtoModel> GetAllCategories()
         {
             var categories = base.GetAll().Where(x => !x.IsDeleted).ToList();
-            return mapper.Map<List<CategoryDtoModel>>(categories);
+            return mapper.Map<List<CategoryDtoModel>>(categories).ToList();
         }
     }
 }

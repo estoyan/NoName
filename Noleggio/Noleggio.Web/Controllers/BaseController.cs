@@ -13,6 +13,7 @@ using System.Web.UI;
 
 namespace Noleggio.Web.Controllers
 {
+
     public class BaseController : Controller
     {
         protected ICategoryService categoryService;
@@ -29,15 +30,20 @@ namespace Noleggio.Web.Controllers
             return this.categoryService.GetAllCategories();
         }
 
-        [OutputCache(Duration = 60,Location = OutputCacheLocation.Server)]
+
+        [OutputCache(Duration = 60, Location = OutputCacheLocation.Server)]
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
-            // Work with data before BeginExecute to prevent "NotSupportedException: A second operation started on this context before a previous asynchronous operation completed."
 
             this.ViewBag.MainCategories = this.GetCategories();
             var result = base.BeginExecute(requestContext, callback, state);
 
             return result;
+        }
+
+        protected void BeginExexuteCall(RequestContext requestContext, AsyncCallback callback, object state)
+        {
+            this.BeginExecute(requestContext, callback, state);
         }
     }
 }
