@@ -39,7 +39,7 @@
                 
             var UserManager = new UserManager<User>(new UserStore<User>(context));
             var PasswordHash = new PasswordHasher();
-            if (!context.Users.Any(u => u.UserName == "amin@noleggio.com"))
+            if (!context.Users.Any(u => u.UserName == "admin@noleggio.com"))
             {
                 var user = new User()
                 {

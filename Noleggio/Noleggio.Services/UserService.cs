@@ -24,33 +24,42 @@ namespace Noleggio.Services
 
         public List<UserDtoModel> All(bool isDeleted)
         {
-            return base.GetAll().Where(x => x.IsDeleted == isDeleted)
-                .ToList()
-                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
-                        .ToList();
+            //return mapper.Map<RentItemDetaildDtoModel>(base.GetById(rentItem));
+
+            return mappingService.Map<List<UserDtoModel>>(
+                base.GetAll()
+                .Where(x => x.IsDeleted == isDeleted)
+                .ToList());
+                
+                 //.Select(x => this.mappingService.Map<UserDtoModel>(x))
+                 //.ToList();
         }
 
         public List<UserDtoModel> All(bool isDeleted, string filter)
         {
-            return base.GetAll().Where(x => x.IsDeleted == isDeleted
-            && (x.UserName.Contains(filter)
-            || x.FirstName.Contains(filter)
-            || x.LastName.Contains(filter)))
-            .ToList()
-                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
-                        .ToList();
+            Guard.WhenArgument(filter, filter).IsNullOrEmpty().Throw();
+
+            return mappingService.Map<List<UserDtoModel>>(base.GetAll().Where(x => x.IsDeleted == isDeleted
+                                  && (x.UserName.Contains(filter)
+                                  || x.FirstName.Contains(filter)
+                                  || x.LastName.Contains(filter)))
+                                  .ToList());
+                        //.Select(x => this.mappingService.Map<UserDtoModel>(x))
+                        //.ToList();
         }
 
 
         public List<UserDtoModel> GetByUserName(string name)
         {
-            return base.GetAll().Select(x => x.UserName.Contains(name)
-            || x.FirstName.Contains(name)
-            || x.LastName.Contains(name)).
-            ToList()
-                        .Select(x => this.mappingService.Map<UserDtoModel>(x))
-                        .ToList()
-                        ;
+            Guard.WhenArgument(name, name).IsNullOrEmpty().Throw();
+
+            return mappingService.Map<List<UserDtoModel>>(base.GetAll().Select(x => x.UserName.Contains(name)
+                                || x.FirstName.Contains(name)
+                                || x.LastName.Contains(name)).
+                                ToList());
+                       //.Select(x => this.mappingService.Map<UserDtoModel>(x))
+                       // .ToList()
+                       // ;
         }
     }
 }
