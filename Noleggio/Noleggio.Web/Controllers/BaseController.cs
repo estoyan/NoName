@@ -31,7 +31,7 @@ namespace Noleggio.Web.Controllers
         }
 
 
-        [OutputCache(Duration = 60, Location = OutputCacheLocation.Server)]
+        [OutputCache(Duration = 10*60, Location = OutputCacheLocation.Server)]
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
 

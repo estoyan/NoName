@@ -22,7 +22,7 @@ namespace Noleggio.Web.Controllers
             this.rentItemService = rentItemService;
         }
 
-        [OutputCache(Duration = 10, Location = OutputCacheLocation.Server)]
+        //[OutputCache(Duration = 10, Location = OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             var recentItems=this.rentItemService.Recent(10);
